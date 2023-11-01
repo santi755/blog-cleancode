@@ -1,7 +1,7 @@
-import { PostEntity } from './post.entity';
+import { Post } from './post.entity';
 
 describe('PostEntity', () => {
   it('should be defined', () => {
-    expect(new PostEntity()).toBeDefined();
+    expect(new Post()).toBeDefined();
   });
 });
