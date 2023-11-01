@@ -1,3 +1,7 @@
+import * as path from 'path';
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import { Module } from '@nestjs/common';
 import { BlogModule } from './blog/blog.module';
 import { PersonalDashboardModule } from './personal-dashboard/personal-dashboard.module';
@@ -8,18 +12,20 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     BlogModule,
     PersonalDashboardModule,
     /*
-      TODO: Change this to a .env variable
-      TODO: Move this to a DATABASE config file
+      TODO: Check some way (Best practices) to access the environment variables
+      TODO: Move this to a DATABASE config filee
     */
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'db-blog-cleancode',
-      entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: true,
+    TypeOrmModule.forRootAsync({
+      useFactory: () => ({
+        type: 'mysql',
+        host: process.env.DB_HOST,
+        port: parseInt(process.env.DB_PORT, 10),
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
+        entities: [path.join(__dirname, '**', '*.entity{.ts,.js}')],
+        synchronize: true,
+      }),
     }),
   ],
   controllers: [],
