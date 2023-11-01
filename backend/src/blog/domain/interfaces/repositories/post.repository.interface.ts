@@ -1,8 +1,8 @@
 import { Post } from '../../entities/post/post.entity';
 
-export interface PostRepository {
-    findPostById(id: number): Promise<Post>;
-    /*
+export interface IPostRepository {
+  findPostById(id: number): Promise<Post | null>;
+  /*
     findPostBySlug(slug: string): Promise<Post>;
     findAllPosts(): Promise<Post[]>;
     createPost(post: Post): Promise<Post>;
