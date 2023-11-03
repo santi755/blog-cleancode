@@ -7,10 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class PostsService {
   postsRepository: PostsRepository;
 
-  constructor(
-    /*private readonly postRepository: PostRepository*/
-    @InjectRepository(Posts) postsRepository: PostsRepository,
-  ) {
+  constructor(@InjectRepository(Posts) postsRepository: PostsRepository) {
     this.postsRepository = postsRepository;
   }
 
