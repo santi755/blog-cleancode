@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
-import { PostsController } from './presentation/controllers/post/post.controller';
-import { PostsService } from './application/services/post/posts.service';
-import { TypeOrmPostRepository } from './infrastructure/repositories/post/typeOrmPost.repository';
+import { PostsController } from './presentation/controllers/posts/posts.controller';
+import { PostsService } from './application/services/posts/posts.service';
+import { TypeOrmPostsRepository } from './infrastructure/repositories/posts/typeOrmPosts.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Post } from './domain/entities/post/post.entity';
+import { Posts } from './domain/entities/posts/posts.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Post])],
+  imports: [TypeOrmModule.forFeature([Posts])],
   providers: [
     {
-      provide: 'PostRepository',
-      useClass: TypeOrmPostRepository,
+      provide: 'PostsRepository',
+      useClass: TypeOrmPostsRepository,
     },
     PostsService,
   ],
