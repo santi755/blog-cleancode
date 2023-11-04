@@ -1,44 +1,8 @@
+/*
+import { Posts } from './../../interfaces/entities/posts.entity.interface';
 import { v4 as uuid } from 'uuid';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
 
-@Entity()
-export class Posts {
-  @PrimaryGeneratedColumn('uuid')
-  id: string = uuid();
-
-  @CreateDateColumn()
-  publishedAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
-  @Column()
-  title: string;
-
-  @Column()
-  content: string;
-
-  // TODO: Create a value object for it
-  @Column({
-    type: 'enum',
-    enum: ['draft', 'published', 'unpublished'],
-    default: 'draft',
-  })
-  status: string;
-}
-
-/**
- * TODO: Use this class instead of the one above
- *
- * import { v4 as uuid } from 'uuid';
-
-export class Post {
+export class PostsEntity implements Posts {
   private readonly id: string;
   private publishedAt: Date;
   private updatedAt: Date;
@@ -85,6 +49,39 @@ export class Post {
   get statusValue(): string {
     return this.status;
   }
-}
+}*/
 
- */
+import { v4 as uuid } from 'uuid';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+
+@Entity()
+export class Posts {
+  @PrimaryGeneratedColumn('uuid')
+  id: string = uuid();
+
+  @CreateDateColumn()
+  publishedAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @Column()
+  title: string;
+
+  @Column()
+  content: string;
+
+  // TODO: Create a value object for it
+  @Column({
+    type: 'enum',
+    enum: ['draft', 'published', 'unpublished'],
+    default: 'draft',
+  })
+  status: string;
+}
