@@ -2,6 +2,7 @@ import { DataSource, Repository } from 'typeorm';
 import { PostsRepository } from 'src/bounded-contexts/blog/domain/interfaces/repositories/posts.repository.interface';
 import { TypeOrmPosts } from 'src/bounded-contexts/blog/infrastructure/domain/entities/posts/typeOrmPosts.schema';
 import { Posts } from 'src/bounded-contexts/blog/domain/entities/posts/posts.entity';
+import { CreatePostsDto } from 'src/bounded-contexts/blog/domain/dtos/posts/createPosts.dto';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -23,9 +24,28 @@ export class TypeOrmPostsRepository
 
       return this.mapToDomainEntity(post);
     } catch (error) {
-      console.log(error);
-      return null;
+      throw new Error(error);
     }
+  }
+
+  async add(createPostsDto: CreatePostsDto): Promise<Posts | null> {
+    let post: Posts;
+    try {
+      post = new Posts({
+        id: null,
+        publishedAt: new Date(),
+        updatedAt: new Date(),
+        title: createPostsDto.title,
+        content: createPostsDto.content,
+        status: createPostsDto.status,
+      });
+    } catch (error) {
+      return error;
+    }
+
+    const ormPost = this.mapToOrmEntity(post);
+    const createdPost = await this.save(ormPost);
+    return this.mapToDomainEntity(createdPost);
   }
 
   private mapToDomainEntity(post: TypeOrmPosts): Posts {
