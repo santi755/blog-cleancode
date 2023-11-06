@@ -1,7 +1,7 @@
 export interface Posts {
   idValue: string | null;
   publishedAtValue: Date;
-  updatedAtValue: Date;
+  editedAtValue: Date;
   titleValue: string;
   contentValue: string;
   statusValue: string;

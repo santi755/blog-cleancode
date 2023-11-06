@@ -9,10 +9,10 @@ describe('PostEntity', () => {
     post = new Posts({
       id: '',
       publishedAt: newDate,
-      updatedAt: newDate,
+      editedAt: newDate,
       title: 'title',
       content: 'content',
-      status: 'status',
+      status: 'draft',
     });
     expect(post).toBeDefined();
   });
@@ -27,9 +27,22 @@ describe('PostEntity', () => {
 
     expect(post.idValue).toMatch(uuidformatRegex);
     expect(post.publishedAtValue).toEqual(newDate);
-    expect(post.updatedAtValue).toEqual(newDate);
+    expect(post.editedAtValue).toEqual(newDate);
     expect(post.titleValue).toEqual('title');
     expect(post.contentValue).toEqual('content');
-    expect(post.statusValue).toEqual('status');
+    expect(post.statusValue).toEqual('draft');
+  });
+
+  it('should throw an error if the status is not valid', () => {
+    expect(() => {
+      post = new Posts({
+        id: '',
+        publishedAt: newDate,
+        editedAt: newDate,
+        title: 'title',
+        content: 'content',
+        status: 'random stuff',
+      });
+    }).toThrow();
   });
 });

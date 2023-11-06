@@ -20,7 +20,7 @@ export class TypeOrmPosts {
   public publishedAt: Date;
 
   @UpdateDateColumn()
-  public updatedAt: Date;
+  public editedAt: Date;
 
   @Column()
   public title: string;

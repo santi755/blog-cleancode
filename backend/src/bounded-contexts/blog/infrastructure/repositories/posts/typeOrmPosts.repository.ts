@@ -3,6 +3,7 @@ import { PostsRepository } from 'src/bounded-contexts/blog/domain/interfaces/rep
 import { TypeOrmPosts } from 'src/bounded-contexts/blog/infrastructure/domain/entities/posts/typeOrmPosts.schema';
 import { Posts } from 'src/bounded-contexts/blog/domain/entities/posts/posts.entity';
 import { CreatePostsDto } from 'src/bounded-contexts/blog/domain/dtos/posts/createPosts.dto';
+import { EditPostsDto } from 'src/bounded-contexts/blog/domain/dtos/posts/editPosts.dto';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -34,7 +35,7 @@ export class TypeOrmPostsRepository
       post = new Posts({
         id: null,
         publishedAt: new Date(),
-        updatedAt: new Date(),
+        editedAt: new Date(),
         title: createPostsDto.title,
         content: createPostsDto.content,
         status: createPostsDto.status,
@@ -48,11 +49,32 @@ export class TypeOrmPostsRepository
     return this.mapToDomainEntity(createdPost);
   }
 
+  async edit(editPostsDto: EditPostsDto): Promise<Posts | null> {
+    let post: Posts;
+    try {
+      post = await this.search(editPostsDto.id);
+      post.titleValue = editPostsDto.title;
+      post.contentValue = editPostsDto.content;
+      post.statusValue = editPostsDto.status;
+      post.editedAtValue = editPostsDto.editedAt;
+
+      if (!post) {
+        return null;
+      }
+    } catch (error) {
+      return error;
+    }
+
+    const ormPost = this.mapToOrmEntity(post);
+    const updatedPost = await this.save(ormPost);
+    return this.mapToDomainEntity(updatedPost);
+  }
+
   private mapToDomainEntity(post: TypeOrmPosts): Posts {
     return new Posts({
       id: post.id,
       publishedAt: post.publishedAt,
-      updatedAt: post.updatedAt,
+      editedAt: post.editedAt,
       title: post.title,
       content: post.content,
       status: post.status,
@@ -63,7 +85,7 @@ export class TypeOrmPostsRepository
     return {
       id: post.idValue,
       publishedAt: post.publishedAtValue,
-      updatedAt: post.updatedAtValue,
+      editedAt: post.editedAtValue,
       title: post.titleValue,
       content: post.contentValue,
       status: post.statusValue,

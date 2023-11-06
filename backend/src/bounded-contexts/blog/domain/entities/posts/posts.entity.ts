@@ -4,7 +4,7 @@ import { PostsStatus } from 'src/bounded-contexts/blog/domain/value-objects/post
 export class Posts {
   private readonly id: PostsId;
   private publishedAt: Date;
-  private updatedAt: Date;
+  private editedAt: Date;
   private title: string;
   private content: string;
   private status: PostsStatus;
@@ -12,21 +12,21 @@ export class Posts {
   constructor({
     id,
     publishedAt,
-    updatedAt,
+    editedAt,
     title,
     content,
     status,
   }: {
     id: string;
     publishedAt: Date;
-    updatedAt: Date;
+    editedAt: Date;
     title: string;
     content: string;
     status: string;
   }) {
     this.id = new PostsId(id);
     this.publishedAt = publishedAt;
-    this.updatedAt = updatedAt;
+    this.editedAt = editedAt;
     this.title = title;
     this.content = content;
     this.status = new PostsStatus(status);
@@ -40,8 +40,8 @@ export class Posts {
     return this.publishedAt;
   }
 
-  get updatedAtValue(): Date {
-    return this.updatedAt;
+  get editedAtValue(): Date {
+    return this.editedAt;
   }
 
   get titleValue(): string {
@@ -54,5 +54,21 @@ export class Posts {
 
   get statusValue(): string {
     return this.status.value;
+  }
+
+  set titleValue(title: string) {
+    this.title = title;
+  }
+
+  set statusValue(status: string) {
+    this.status = new PostsStatus(status);
+  }
+
+  set contentValue(content: string) {
+    this.content = content;
+  }
+
+  set editedAtValue(editedAt: Date) {
+    this.editedAt = editedAt;
   }
 }
