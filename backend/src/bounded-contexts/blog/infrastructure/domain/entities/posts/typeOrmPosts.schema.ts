@@ -6,6 +6,11 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+/**
+ * TODO: Check this way to define the schema
+ *  - https://github.com/typeorm/typeorm/issues/10217
+ */
+
 @Entity('posts')
 export class TypeOrmPosts {
   @PrimaryGeneratedColumn('uuid')
