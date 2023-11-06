@@ -1,9 +1,7 @@
-/*
-import { Posts } from './../../interfaces/entities/posts.entity.interface';
-import { v4 as uuid } from 'uuid';
+import { PostsId } from 'src/bounded-contexts/blog/domain/value-objects/postsId.value-object';
 
-export class PostsEntity implements Posts {
-  private readonly id: string;
+export class Posts {
+  private readonly id: PostsId;
   private publishedAt: Date;
   private updatedAt: Date;
   private title: string;
@@ -18,7 +16,7 @@ export class PostsEntity implements Posts {
     content: string,
     status: string,
   ) {
-    this.id = id ?? uuid();
+    this.id = new PostsId(id);
     this.publishedAt = publishedAt;
     this.updatedAt = updatedAt;
     this.title = title;
@@ -27,7 +25,7 @@ export class PostsEntity implements Posts {
   }
 
   get idValue(): string {
-    return this.id;
+    return this.id.value;
   }
 
   get publishedAtValue(): Date {
@@ -49,39 +47,4 @@ export class PostsEntity implements Posts {
   get statusValue(): string {
     return this.status;
   }
-}*/
-
-import { v4 as uuid } from 'uuid';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
-
-@Entity()
-export class Posts {
-  @PrimaryGeneratedColumn('uuid')
-  id: string = uuid();
-
-  @CreateDateColumn()
-  publishedAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
-  @Column()
-  title: string;
-
-  @Column()
-  content: string;
-
-  // TODO: Create a value object for it
-  @Column({
-    type: 'enum',
-    enum: ['draft', 'published', 'unpublished'],
-    default: 'draft',
-  })
-  status: string;
 }

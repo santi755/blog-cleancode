@@ -5,7 +5,6 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // TODO: Move this to a SWAGGER config file
   const config = new DocumentBuilder()
     .setTitle('Blog Cleancode')
     .setDescription('Blog Cleancode API description')
