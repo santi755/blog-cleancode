@@ -29,14 +29,14 @@ export class TypeOrmPostsRepository
   }
 
   private mapToDomainEntity(post: TypeOrmPosts): Posts {
-    return new Posts(
-      post.id,
-      post.publishedAt,
-      post.updatedAt,
-      post.title,
-      post.content,
-      post.status,
-    );
+    return new Posts({
+      id: post.id,
+      publishedAt: post.publishedAt,
+      updatedAt: post.updatedAt,
+      title: post.title,
+      content: post.content,
+      status: post.status,
+    });
   }
 
   private mapToOrmEntity(post: Posts): TypeOrmPosts {

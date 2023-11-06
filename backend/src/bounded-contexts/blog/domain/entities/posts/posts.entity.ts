@@ -1,4 +1,4 @@
-import { PostsId } from 'src/bounded-contexts/blog/domain/value-objects/postsId.value-object';
+import { PostsId } from 'src/bounded-contexts/blog/domain/value-objects/posts-id.value-object';
 //import { PostsId } from '../../value-objects/postsId.value-object';
 
 export class Posts {
@@ -9,14 +9,21 @@ export class Posts {
   private content: string;
   private status: string;
 
-  constructor(
-    id: string,
-    publishedAt: Date,
-    updatedAt: Date,
-    title: string,
-    content: string,
-    status: string,
-  ) {
+  constructor({
+    id,
+    publishedAt,
+    updatedAt,
+    title,
+    content,
+    status,
+  }: {
+    id: string;
+    publishedAt: Date;
+    updatedAt: Date;
+    title: string;
+    content: string;
+    status: string;
+  }) {
     this.id = new PostsId(id);
     this.publishedAt = publishedAt;
     this.updatedAt = updatedAt;

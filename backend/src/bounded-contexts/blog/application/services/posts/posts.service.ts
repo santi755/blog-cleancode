@@ -11,7 +11,6 @@ export class PostsService {
     this.postsRepository = postsRepository;
   }
 
-  //async search(id: string): Promise<Post> {
   search(id: string): Promise<Posts> {
     const post = this.postsRepository.search(id);
     return post;
