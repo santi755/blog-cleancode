@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { TypeOrmComments } from 'src/bounded-contexts/blog/infrastructure/domain/entities/comments/typeOrmComments.schema';
 
 /**
  * TODO: Check this way to define the schema
@@ -34,4 +36,7 @@ export class TypeOrmPosts {
     default: 'draft',
   })
   status: string;
+
+  @OneToMany(() => TypeOrmComments, (comment) => comment.post)
+  comments: TypeOrmComments[];
 }

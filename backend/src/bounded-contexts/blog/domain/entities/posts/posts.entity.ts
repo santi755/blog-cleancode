@@ -1,13 +1,15 @@
-import { PostsId } from 'src/bounded-contexts/blog/domain/value-objects/posts-id.value-object';
+import { UuidVO } from 'src/bounded-contexts/blog/domain/value-objects/uuid.value-object';
 import { PostsStatus } from 'src/bounded-contexts/blog/domain/value-objects/posts-status.value-object';
+import { Comments } from 'src/bounded-contexts/blog/domain/entities/comment/comment.entity';
 
 export class Posts {
-  private readonly id: PostsId;
+  private readonly id: UuidVO;
   private publishedAt: Date;
   private editedAt: Date;
   private title: string;
   private content: string;
   private status: PostsStatus;
+  private comments: Comments[];
 
   constructor({
     id,
@@ -16,6 +18,7 @@ export class Posts {
     title,
     content,
     status,
+    comments = [],
   }: {
     id: string;
     publishedAt: Date;
@@ -23,13 +26,15 @@ export class Posts {
     title: string;
     content: string;
     status: string;
+    comments?: Comments[];
   }) {
-    this.id = new PostsId(id);
+    this.id = new UuidVO(id);
     this.publishedAt = publishedAt;
     this.editedAt = editedAt;
     this.title = title;
     this.content = content;
     this.status = new PostsStatus(status);
+    this.comments = comments;
   }
 
   get idValue(): string {
@@ -70,5 +75,9 @@ export class Posts {
 
   set editedAtValue(editedAt: Date) {
     this.editedAt = editedAt;
+  }
+
+  get commentsValue(): Comments[] {
+    return this.comments;
   }
 }

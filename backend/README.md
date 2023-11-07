@@ -11,48 +11,51 @@ This is a simple explanation of the layers of the application and the behavior b
 Decorator to avoid Onsave action in VSCode
 
 ```ts
-blog (bounded context)
-    - infrastructure
-        - repositories
-            - mysql
-                - post
-                    - postGetById.repository.ts
-        - config
-            - database
-                - mysql
-                    - mysql.config.ts
+src
+├── bounded-contexts
+│   ├── blog
+│   │   ├── application
+│   │   │   ├── services
+│   │   │   │   └── posts
+│   │   │   │       ├── posts.service.ts
+│   │   │   │       └── posts.service.spec.ts
+│   │   │   └── use-cases
+│   │   │       └── posts
+│   │   │           ├── create-post
+│   │   │           │   ├── create-post.use-case.ts
+│   │   │           │   └── create-post.use-case.spec.ts
+│   │   │           ├── delete-post
+│   │   │           │   ├── delete-post.use-case.ts
+│   │   │           │   └── delete-post.use-case.spec.ts
+│   │   │           ├── get-post
+│   │   │           │   ├── get-post.use-case.ts
+│   │   │           │   └── get-post.use-case.spec.ts
+│   │   │           ├── get-posts
+│   │   │           │   ├── get-posts.use-case.ts
+│   │   │           │   └── get-posts.use-case.spec.ts
+│   │   │           ├── update-post
+│   │   │           │   ├── update-post.use-case.ts
+│   │   │           │   └── update-post.use-case.spec.ts
+│   │   │           └── index.ts
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   │   └── posts
+│   │   │   │       ├── posts.entity.ts
+│   │   │   │       └── posts.entity.spec.ts
+│   │   │   │   └── comments
+│   │   │   │       ├── comments.entity.ts
+│   │   │   │       └── comments.entity.spec.ts
+│   │   ├── infrastructure
+│   │   │   ├── repositories
+│   │   │   │   └── posts
+│   │   │   │       ├── typeOrmPosts.repository.ts
+│   │   │   │       └── typeOrmPosts.repository.spec.ts
+│   │   │   │   └── comments
+│   │   │   │       ├── typeOrmComments.repository.ts
+│   │   │   │       └── typeOrmComments.repository.spec.ts
+│   │   │   └── mappers
+│   │   │       └── posts
+│   │   │           ├── post.mapper.ts
+│   │   │           └── post.mapper.spec.ts
 
-    - application
-
-    - domain
-        - entities
-            - post
-                - post.entity.ts
-            - comment
-                - comment.entity.ts
-        - dto
-            - post
-                - post.dto.ts
-            - comment
-                - comment.dto.ts
-        - value-objects
-            - name.value-object.ts
-        - interfaces
-            - repositories
-                - post.repository.interface.ts
-                - comment.repository.interface.ts
-
-    - presentation
-        - controllers
-            - post
-                - post.controller.ts
-      /*  - dtos
-            - post
-                - post.dto.ts
-        - mappers
-            - post
-                - post.mapper.ts
-        - routes
-            - post
-                - post.routes.ts*/
 ```

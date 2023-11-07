@@ -5,6 +5,7 @@ import { Posts } from 'src/bounded-contexts/blog/domain/entities/posts/posts.ent
 import { CreatePostsDto } from 'src/bounded-contexts/blog/domain/dtos/posts/createPosts.dto';
 import { EditPostsDto } from 'src/bounded-contexts/blog/domain/dtos/posts/editPosts.dto';
 import { Injectable } from '@nestjs/common';
+import { TypeOrmPostsMapper } from 'src/bounded-contexts/blog/infrastructure/mappers/posts/posts.mapaper';
 
 @Injectable()
 export class TypeOrmPostsRepository
@@ -23,7 +24,7 @@ export class TypeOrmPostsRepository
         return null;
       }
 
-      return this.mapToDomainEntity(post);
+      return TypeOrmPostsMapper.mapToDomainEntity(post);
     } catch (error) {
       throw new Error(error);
     }
@@ -44,9 +45,9 @@ export class TypeOrmPostsRepository
       return error;
     }
 
-    const ormPost = this.mapToOrmEntity(post);
+    const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
     const createdPost = await this.save(ormPost);
-    return this.mapToDomainEntity(createdPost);
+    return TypeOrmPostsMapper.mapToDomainEntity(createdPost);
   }
 
   async edit(editPostsDto: EditPostsDto): Promise<Posts | null> {
@@ -65,30 +66,8 @@ export class TypeOrmPostsRepository
       return error;
     }
 
-    const ormPost = this.mapToOrmEntity(post);
+    const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
     const updatedPost = await this.save(ormPost);
-    return this.mapToDomainEntity(updatedPost);
-  }
-
-  private mapToDomainEntity(post: TypeOrmPosts): Posts {
-    return new Posts({
-      id: post.id,
-      publishedAt: post.publishedAt,
-      editedAt: post.editedAt,
-      title: post.title,
-      content: post.content,
-      status: post.status,
-    });
-  }
-
-  private mapToOrmEntity(post: Posts): TypeOrmPosts {
-    return {
-      id: post.idValue,
-      publishedAt: post.publishedAtValue,
-      editedAt: post.editedAtValue,
-      title: post.titleValue,
-      content: post.contentValue,
-      status: post.statusValue,
-    };
+    return TypeOrmPostsMapper.mapToDomainEntity(updatedPost);
   }
 }
