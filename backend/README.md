@@ -17,26 +17,15 @@ src
 │   │   ├── application
 │   │   │   ├── services
 │   │   │   │   └── posts
-│   │   │   │       ├── posts.service.ts
-│   │   │   │       └── posts.service.spec.ts
-│   │   │   └── use-cases
-│   │   │       └── posts
-│   │   │           ├── create-post
-│   │   │           │   ├── create-post.use-case.ts
-│   │   │           │   └── create-post.use-case.spec.ts
-│   │   │           ├── delete-post
-│   │   │           │   ├── delete-post.use-case.ts
-│   │   │           │   └── delete-post.use-case.spec.ts
-│   │   │           ├── get-post
-│   │   │           │   ├── get-post.use-case.ts
-│   │   │           │   └── get-post.use-case.spec.ts
-│   │   │           ├── get-posts
-│   │   │           │   ├── get-posts.use-case.ts
-│   │   │           │   └── get-posts.use-case.spec.ts
-│   │   │           ├── update-post
-│   │   │           │   ├── update-post.use-case.ts
-│   │   │           │   └── update-post.use-case.spec.ts
-│   │   │           └── index.ts
+│   │   │   │       ├── create-post
+│   │   │   │       │   ├── create-post.service.ts
+│   │   │   │       │   └── create-post.service.spec.ts
+│   │   │   │       ├── delete-post
+│   │   │   │       │   ├── delete-post.service.ts
+│   │   │   │       │   └── delete-post.service.spec.ts
+│   │   │   │       ├── get-post
+│   │   │   │       │   ├── get-post.service.ts
+│   │   │   │       │   └── get-post.service.spec.ts
 │   │   ├── domain
 │   │   │   ├── entities
 │   │   │   │   └── posts

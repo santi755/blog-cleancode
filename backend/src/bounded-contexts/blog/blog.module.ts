@@ -3,6 +3,9 @@ import { PostsController } from './presentation/controllers/posts/posts.controll
 import { PostsService } from './application/services/posts/posts.service';
 import { TypeOrmPostsRepository } from './infrastructure/repositories/posts/typeOrmPosts.repository';
 import { TypeOrmCommentsRepository } from './infrastructure/repositories/comments/typeOrmComments.repository';
+import { CreatePostsService } from './application/services/posts/create-posts/create-posts.service';
+import { EditPostsService } from './application/services/posts/edit-posts/edit-posts.service';
+import { SearchPostsService } from './application/services/posts/search-posts/search-posts.service';
 
 @Module({
   providers: [
@@ -15,6 +18,9 @@ import { TypeOrmCommentsRepository } from './infrastructure/repositories/comment
       useClass: TypeOrmCommentsRepository,
     },
     PostsService,
+    CreatePostsService,
+    EditPostsService,
+    SearchPostsService,
   ],
   controllers: [PostsController],
 })
