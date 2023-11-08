@@ -16,7 +16,7 @@ Decorator to avoid Onsave action in VSCode
 
 - [ ] Refactor value objects to use "static of" and "static fromPrimitives" methods
 - [ ] Remove Comments.service and use CommentRepository inside each service instead (DDD)
-- [ ] Change folder structure. Inside "blog" should be "application, domain, infrastructure, presentation" folders. And inside each one, the corresponding files.
+- [ ] Change folder structure. Inside "blog" should be "Posts, Comments..." folders. And inside each one, the corresponding DDD layers ("application, domain, infrastructure, presentation").
 
 ### Following iterations
 
