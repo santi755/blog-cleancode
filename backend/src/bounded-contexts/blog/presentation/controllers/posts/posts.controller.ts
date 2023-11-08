@@ -1,7 +1,17 @@
-import { Controller, Get, Param, Post, Body, Patch } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Post,
+  Body,
+  Patch,
+  Delete,
+} from '@nestjs/common';
 import { CreatePostsService } from 'src/bounded-contexts/blog/application/services/posts/create-posts/create-posts.service';
 import { EditPostsService } from 'src/bounded-contexts/blog/application/services/posts/edit-posts/edit-posts.service';
 import { SearchPostsService } from 'src/bounded-contexts/blog/application/services/posts/search-posts/search-posts.service';
+import { EliminatePostsService } from 'src/bounded-contexts/blog/application/services/posts/eliminate-posts/eliminate-posts.service';
+
 import { Posts } from 'src/bounded-contexts/blog/domain/entities/posts/posts.entity';
 import { CreatePostsDto } from 'src/bounded-contexts/blog/domain/dtos/posts/createPosts.dto';
 import { EditPostsDto } from 'src/bounded-contexts/blog/domain/dtos/posts/editPosts.dto';
@@ -12,6 +22,7 @@ export class PostsController {
     private readonly createPostsService: CreatePostsService,
     private readonly editPostsService: EditPostsService,
     private readonly searchPostsService: SearchPostsService,
+    private readonly eliminatePostsService: EliminatePostsService,
   ) {}
 
   @Get(':postId')
@@ -38,6 +49,15 @@ export class PostsController {
         id: postsId,
         ...editPostsDto,
       });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  @Delete(':postId')
+  async eliminatePost(@Param('postId') postId: string): Promise<void> {
+    try {
+      return await this.eliminatePostsService.eliminate(postId);
     } catch (error) {
       return error;
     }

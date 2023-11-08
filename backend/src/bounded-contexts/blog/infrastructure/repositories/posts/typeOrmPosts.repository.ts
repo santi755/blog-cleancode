@@ -70,4 +70,20 @@ export class TypeOrmPostsRepository
     const updatedPost = await this.save(ormPost);
     return TypeOrmPostsMapper.mapToDomainEntity(updatedPost);
   }
+
+  async eliminate(id: string): Promise<void> {
+    let post: Posts;
+    try {
+      post = await this.search(id);
+
+      if (!post) {
+        return null;
+      }
+    } catch (error) {
+      return error;
+    }
+
+    const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
+    await this.remove(ormPost);
+  }
 }

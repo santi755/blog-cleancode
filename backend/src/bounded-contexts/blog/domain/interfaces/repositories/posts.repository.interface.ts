@@ -6,4 +6,5 @@ export interface PostsRepository {
   search(id: string): Promise<Posts | null>;
   add(createPostsDto: CreatePostsDto): Promise<Posts>;
   edit(editPostsDto: EditPostsDto): Promise<Posts>;
+  eliminate(id: string): Promise<void>;
 }

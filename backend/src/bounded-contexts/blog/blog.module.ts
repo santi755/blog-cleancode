@@ -6,6 +6,7 @@ import { TypeOrmCommentsRepository } from './infrastructure/repositories/comment
 import { CreatePostsService } from './application/services/posts/create-posts/create-posts.service';
 import { EditPostsService } from './application/services/posts/edit-posts/edit-posts.service';
 import { SearchPostsService } from './application/services/posts/search-posts/search-posts.service';
+import { EliminatePostsService } from './application/services/posts/eliminate-posts/eliminate-posts.service';
 
 @Module({
   providers: [
@@ -21,6 +22,7 @@ import { SearchPostsService } from './application/services/posts/search-posts/se
     CreatePostsService,
     EditPostsService,
     SearchPostsService,
+    EliminatePostsService,
   ],
   controllers: [PostsController],
 })
