@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: 20.5.0
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Run tests
-        run: yarn test
+      - name: Install dependencies and run tests
+        run: |
+          cd backend  # Cambia al directorio backend
+          yarn install  # Instala las dependencias desde el package.json de backend
+          yarn test  # Ejecuta los tests desde el package.json de backend
