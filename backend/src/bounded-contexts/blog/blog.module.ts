@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { PostsController } from './presentation/controllers/posts/posts.controller';
-import { PostsService } from './application/services/posts/Posts.service';
 import { TypeOrmPostsRepository } from './infrastructure/repositories/posts/typeOrmPosts.repository';
 import { TypeOrmCommentsRepository } from './infrastructure/repositories/comments/typeOrmComments.repository';
 import { CreatePostsService } from './application/services/posts/create-posts/CreatePosts.service';
@@ -8,8 +7,7 @@ import { EditPostsService } from './application/services/posts/edit-posts/EditPo
 import { SearchPostsService } from './application/services/posts/search-posts/SearchPosts.service';
 import { EliminatePostsService } from './application/services/posts/eliminate-posts/EliminatePosts.service';
 import { CommentsController } from './presentation/controllers/comments/comments.controller';
-import { CommentsService } from './application/services/comments/Comments.service';
-import { SearchCommentsService } from './application/services/comments/create-comments/SearchComments.service';
+import { SearchCommentsService } from './application/services/comments/search-comments/SearchComments.service';
 import { CreateCommentsService } from './application/services/comments/create-comments/CreateComments.service';
 
 @Module({
@@ -22,12 +20,10 @@ import { CreateCommentsService } from './application/services/comments/create-co
       provide: 'CommentsRepository',
       useClass: TypeOrmCommentsRepository,
     },
-    PostsService,
     CreatePostsService,
     EditPostsService,
     SearchPostsService,
     EliminatePostsService,
-    CommentsService,
     SearchCommentsService,
     CreateCommentsService,
   ],

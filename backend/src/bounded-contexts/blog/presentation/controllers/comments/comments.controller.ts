@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { SearchCommentsService } from 'src/bounded-contexts/blog/application/services/comments/create-comments/SearchComments.service';
+import { SearchCommentsService } from 'src/bounded-contexts/blog/application/services/comments/search-comments/SearchComments.service';
 import { Comments } from 'src/bounded-contexts/blog/domain/entities/comments/comments.entity';
 import { CreateCommentsService } from 'src/bounded-contexts/blog/application/services/comments/create-comments/CreateComments.service';
 import { CreateCommentsDto } from 'src/bounded-contexts/blog/domain/dtos/comments/CreateComments.dto';
