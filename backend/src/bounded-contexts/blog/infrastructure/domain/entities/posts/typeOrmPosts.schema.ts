@@ -37,8 +37,6 @@ export class TypeOrmPosts {
   })
   status: string;
 
-  @OneToMany(() => TypeOrmComments, (comment) => comment.post, {
-    cascade: true,
-  })
+  @OneToMany(() => TypeOrmComments, (comment) => comment.post)
   comments: TypeOrmComments[];
 }

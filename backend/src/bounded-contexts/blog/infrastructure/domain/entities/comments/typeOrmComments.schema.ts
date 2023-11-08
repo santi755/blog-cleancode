@@ -29,6 +29,8 @@ export class TypeOrmComments {
   @Column({ type: 'uuid' })
   postId: string;
 
-  @ManyToOne(() => TypeOrmPosts, (post) => post.comments)
+  @ManyToOne(() => TypeOrmPosts, (post) => post.comments, {
+    onDelete: 'CASCADE',
+  })
   post?: TypeOrmPosts;
 }
