@@ -21,7 +21,7 @@ Decorator to avoid Onsave action in VSCode
 ### Following iterations
 
 - [ ] Add CQRS (Command Query Responsibility Segregation). Create a folder "application" and inside it, create a folder "commands" and "queries". Move the corresponding files to each folder.
-- [ ] Add MongoDB as a database. Create a folder "infrastructure" and inside it, create a folder "persistence". Move the corresponding files to each folder.
+- [ ] Add MongoDB as a database. Create a folder "infrastructure" and inside it, create a folder "persistence". Move the corresponding files to each folder. (Vertical slicing)
 
 ### Environment functions
 
