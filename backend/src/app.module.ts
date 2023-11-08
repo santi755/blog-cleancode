@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { BlogModule } from './bounded-contexts/blog/blog.module';
-import { PersonalDashboardModule } from './bounded-contexts/personal-dashboard/personal-dashboard.module';
+import { BlogModule } from './blog/blog.module';
+import { PersonalDashboardModule } from './personal-dashboard/personal-dashboard.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TypeOrmConfigService } from './config/typeOrmConfig.service';
-import { TypeOrmConfigModule } from './config/typeOrmconfig.module';
+import { TypeOrmConfigService } from '../config/typeOrmConfig.service';
+import { TypeOrmConfigModule } from '../config/typeOrmconfig.module';
 
 @Module({
   imports: [

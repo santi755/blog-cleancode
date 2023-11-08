@@ -14,14 +14,14 @@ Decorator to avoid Onsave action in VSCode
 
 ### Domain functions
 
+- [x] Remove Comments.service and use CommentRepository inside each service instead (DDD)
+- [x] Change folder structure. Inside "blog" should be "Posts, Comments..." folders. And inside each one, the corresponding DDD layers ("application, domain, infrastructure, presentation"). (Vertical slicing)
 - [ ] Refactor value objects to use "static of" and "static fromPrimitives" methods
-- [ ] Remove Comments.service and use CommentRepository inside each service instead (DDD)
-- [ ] Change folder structure. Inside "blog" should be "Posts, Comments..." folders. And inside each one, the corresponding DDD layers ("application, domain, infrastructure, presentation").
 
 ### Following iterations
 
 - [ ] Add CQRS (Command Query Responsibility Segregation). Create a folder "application" and inside it, create a folder "commands" and "queries". Move the corresponding files to each folder.
-- [ ] Add MongoDB as a database. Create a folder "infrastructure" and inside it, create a folder "persistence". Move the corresponding files to each folder. (Vertical slicing)
+- [] Add MongoDB as a database. Create a folder "infrastructure" and inside it, create a folder "persistence". Move the corresponding files to each folder.
 
 ### Environment functions
 
