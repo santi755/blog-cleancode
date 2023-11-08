@@ -20,6 +20,6 @@ jobs:
 
       - name: Install dependencies and run tests
         run: |
-          cd backend  # Cambia al directorio backend
-          yarn install  # Instala las dependencias desde el package.json de backend
-          yarn test  # Ejecuta los tests desde el package.json de backend
+          cd backend
+          yarn install
+          yarn test
