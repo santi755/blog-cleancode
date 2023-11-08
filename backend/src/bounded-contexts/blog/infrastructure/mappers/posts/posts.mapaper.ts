@@ -16,6 +16,7 @@ export class TypeOrmPostsMapper {
   }
 
   static mapToOrmEntity(post: Posts): TypeOrmPosts {
+    // TODO: Refactor this. No one is going to understand this.
     const ormComments: TypeOrmComments[] = post.commentsValue
       ? post.commentsValue.map((comment) => {
           return TypeOrmCommentsMapper.mapToOrmEntity(comment);

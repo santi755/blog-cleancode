@@ -8,10 +8,6 @@ export class PostsStatus {
     this.isValidStatus(value);
   }
 
-  getValue(): string {
-    return this.value;
-  }
-
   private isValidStatus(status: string): void {
     const validStatus = ['draft', 'published', 'deleted'];
     if (!validStatus.includes(status)) {
@@ -25,4 +21,19 @@ export class PostsStatus {
       );
     }
   }
+
+  // TODO: Check bien - Se llama antes de insertar en la base de datos
+  /*
+  public static of(params: { value: string }): PostsStatus {
+    this.isValidStatus(params.value);
+    return new PostsStatus(params.value);
+  }
+  */
+
+  // TODO: Check bien - Recoge datos sin hacer una comprorbación
+  /*
+  public static fromPrimitives(value: string): PostsStatus {
+    return new PostsStatus(value);
+  }
+  */
 }

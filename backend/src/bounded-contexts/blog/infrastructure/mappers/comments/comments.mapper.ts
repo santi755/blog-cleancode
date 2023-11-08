@@ -1,4 +1,4 @@
-import { Comments } from 'src/bounded-contexts/blog/domain/entities/comment/comment.entity';
+import { Comments } from 'src/bounded-contexts/blog/domain/entities/comments/comments.entity';
 import { TypeOrmComments } from 'src/bounded-contexts/blog/infrastructure/domain/entities/comments/typeOrmComments.schema';
 
 export class TypeOrmCommentsMapper {
@@ -15,7 +15,7 @@ export class TypeOrmCommentsMapper {
   static mapToOrmEntity(comment: Comments): TypeOrmComments {
     return {
       id: comment.idValue,
-      post: null, // TODO: Check how to return the post
+      postId: comment.postIdValue,
       author: comment.authorValue,
       content: comment.contentValue,
       createdAt: comment.createdAtValue,

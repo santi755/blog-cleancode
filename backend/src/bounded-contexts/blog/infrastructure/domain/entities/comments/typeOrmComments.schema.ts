@@ -26,6 +26,9 @@ export class TypeOrmComments {
   @Column()
   public content: string;
 
+  @Column({ type: 'uuid' })
+  postId: string;
+
   @ManyToOne(() => TypeOrmPosts, (post) => post.comments)
-  post: TypeOrmPosts;
+  post?: TypeOrmPosts;
 }

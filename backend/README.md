@@ -10,41 +10,28 @@ This is a simple explanation of the layers of the application and the behavior b
 
 Decorator to avoid Onsave action in VSCode
 
-```ts
-src
-├── bounded-contexts
-│   ├── blog
-│   │   ├── application
-│   │   │   ├── services
-│   │   │   │   └── posts
-│   │   │   │       ├── create-post
-│   │   │   │       │   ├── create-post.service.ts
-│   │   │   │       │   └── create-post.service.spec.ts
-│   │   │   │       ├── delete-post
-│   │   │   │       │   ├── delete-post.service.ts
-│   │   │   │       │   └── delete-post.service.spec.ts
-│   │   │   │       ├── get-post
-│   │   │   │       │   ├── get-post.service.ts
-│   │   │   │       │   └── get-post.service.spec.ts
-│   │   ├── domain
-│   │   │   ├── entities
-│   │   │   │   └── posts
-│   │   │   │       ├── posts.entity.ts
-│   │   │   │       └── posts.entity.spec.ts
-│   │   │   │   └── comments
-│   │   │   │       ├── comments.entity.ts
-│   │   │   │       └── comments.entity.spec.ts
-│   │   ├── infrastructure
-│   │   │   ├── repositories
-│   │   │   │   └── posts
-│   │   │   │       ├── typeOrmPosts.repository.ts
-│   │   │   │       └── typeOrmPosts.repository.spec.ts
-│   │   │   │   └── comments
-│   │   │   │       ├── typeOrmComments.repository.ts
-│   │   │   │       └── typeOrmComments.repository.spec.ts
-│   │   │   └── mappers
-│   │   │       └── posts
-│   │   │           ├── post.mapper.ts
-│   │   │           └── post.mapper.spec.ts
+## ToDo
 
-```
+### Domain functions
+
+- [ ] Refactor value objects to use "static of" and "static fromPrimitives" methods
+- [ ] Remove Comments.service and use CommentRepository inside each service instead (DDD)
+- [ ] Change folder structure. Inside "blog" should be "application, domain, infrastructure, presentation" folders. And inside each one, the corresponding files.
+
+### Following iterations
+
+- [ ] Add CQRS (Command Query Responsibility Segregation). Create a folder "application" and inside it, create a folder "commands" and "queries". Move the corresponding files to each folder.
+- [ ] Add MongoDB as a database. Create a folder "infrastructure" and inside it, create a folder "persistence". Move the corresponding files to each folder.
+
+### Environment functions
+
+- [ ] Dockerize the application
+- [ ] Add unit tests
+- [ ] Add integration tests
+- [ ] Add e2e tests
+- [ ] Add CI/CD
+- [ ] Add swagger
+- [ ] Add authentication
+- [ ] Add authorization
+- [ ] Add logging
+- [ ] Add monitoring

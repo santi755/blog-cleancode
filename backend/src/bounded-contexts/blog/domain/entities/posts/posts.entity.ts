@@ -1,6 +1,6 @@
 import { UuidVO } from 'src/bounded-contexts/blog/domain/value-objects/Uuid.vo';
 import { PostsStatus } from 'src/bounded-contexts/blog/domain/value-objects/PostsStatus.vo';
-import { Comments } from 'src/bounded-contexts/blog/domain/entities/comment/comment.entity';
+import { Comments } from 'src/bounded-contexts/blog/domain/entities/comments/comments.entity';
 
 export class Posts {
   private readonly id: UuidVO;
