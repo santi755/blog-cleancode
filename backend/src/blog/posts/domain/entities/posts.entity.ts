@@ -1,4 +1,4 @@
-import { UuidVO } from 'src/blog/posts/domain/value-objects/Uuid.vo';
+import { UuidVO } from 'src/shared/domain/value-objects/Uuid.vo';
 import { PostsStatus } from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
 import { Comments } from 'src/blog/comments/domain/entities/comments.entity';
 

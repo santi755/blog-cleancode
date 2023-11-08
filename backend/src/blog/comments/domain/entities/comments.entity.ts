@@ -1,4 +1,4 @@
-import { UuidVO } from 'src/blog/posts/domain/value-objects/Uuid.vo';
+import { UuidVO } from 'src/shared/domain/value-objects/Uuid.vo';
 
 export class Comments {
   private readonly id: UuidVO;
