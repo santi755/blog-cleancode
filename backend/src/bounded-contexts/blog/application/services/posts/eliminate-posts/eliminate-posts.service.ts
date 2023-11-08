@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { EliminatePostDto } from 'src/bounded-contexts/blog/domain/dtos/posts/eliminatePosts.dto';
 import { PostsRepository } from 'src/bounded-contexts/blog/domain/interfaces/repositories/posts.repository.interface';
 import { PostsService } from '../posts.service';
 
