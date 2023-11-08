@@ -7,10 +7,10 @@ import {
   Patch,
   Delete,
 } from '@nestjs/common';
-import { CreatePostsService } from 'src/bounded-contexts/blog/application/services/posts/create-posts/create-posts.service';
-import { EditPostsService } from 'src/bounded-contexts/blog/application/services/posts/edit-posts/edit-posts.service';
-import { SearchPostsService } from 'src/bounded-contexts/blog/application/services/posts/search-posts/search-posts.service';
-import { EliminatePostsService } from 'src/bounded-contexts/blog/application/services/posts/eliminate-posts/eliminate-posts.service';
+import { CreatePostsService } from 'src/bounded-contexts/blog/application/services/posts/create-posts/CreatePosts.service';
+import { EditPostsService } from 'src/bounded-contexts/blog/application/services/posts/edit-posts/EditPosts.service';
+import { SearchPostsService } from 'src/bounded-contexts/blog/application/services/posts/search-posts/SearchPosts.service';
+import { EliminatePostsService } from 'src/bounded-contexts/blog/application/services/posts/eliminate-posts/EliminatePosts.service';
 
 import { Posts } from 'src/bounded-contexts/blog/domain/entities/posts/posts.entity';
 import { CreatePostsDto } from 'src/bounded-contexts/blog/domain/dtos/posts/createPosts.dto';

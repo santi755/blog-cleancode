@@ -1,5 +1,5 @@
-import { UuidVO } from 'src/bounded-contexts/blog/domain/value-objects/uuid.value-object';
-import { PostsStatus } from 'src/bounded-contexts/blog/domain/value-objects/posts-status.value-object';
+import { UuidVO } from 'src/bounded-contexts/blog/domain/value-objects/Uuid.vo';
+import { PostsStatus } from 'src/bounded-contexts/blog/domain/value-objects/PostsStatus.vo';
 import { Comments } from 'src/bounded-contexts/blog/domain/entities/comment/comment.entity';
 
 export class Posts {
