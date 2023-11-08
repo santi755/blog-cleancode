@@ -1,4 +1,4 @@
-import { Comments } from './comment.entity';
+import { Comments } from './comments.entity';
 
 describe('CommentEntity', () => {
   it('should be defined', () => {
