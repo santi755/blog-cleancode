@@ -1,4 +1,4 @@
-import { Comments } from 'src/blog/comments/domain/entities/comments.entity';
+import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
 import { CreateCommentsDto } from 'src/blog/comments/domain/dtos/CreateComments.dto';
 
 export interface CommentsRepository {

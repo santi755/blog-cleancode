@@ -1,4 +1,4 @@
-import { Posts } from 'src/blog/posts/domain/entities/posts.entity';
+import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
 import { SearchPostsService } from 'src/blog/posts/application/services/search-posts/SearchPosts.service';
 import { Controller, Get, Param } from '@nestjs/common';
 

@@ -1,11 +1,11 @@
 import { DataSource, Repository } from 'typeorm';
-import { PostsRepository } from 'src/blog/posts/domain/interfaces/posts.repository.interface';
-import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/typeOrmPosts.schema';
-import { Posts } from 'src/blog/posts/domain/entities/posts.entity';
-import { CreatePostsDto } from 'src/blog/posts/domain/dtos/createPosts.dto';
-import { EditPostsDto } from 'src/blog/posts/domain/dtos/editPosts.dto';
+import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
+import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/TypeOrmPosts.schema';
+import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
+import { CreatePostsDto } from 'src/blog/posts/domain/dtos/CreatePosts.dto';
+import { EditPostsDto } from 'src/blog/posts/domain/dtos/EditPosts.dto';
 import { Injectable } from '@nestjs/common';
-import { TypeOrmPostsMapper } from 'src/blog/posts/infrastructure/mappers/posts.mapper';
+import { TypeOrmPostsMapper } from 'src/blog/posts/infrastructure/mappers/TypeOrmPostsMapper.mapper';
 
 @Injectable()
 export class TypeOrmPostsRepository

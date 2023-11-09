@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/typeOrmComments.schema';
+import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/TypeOrmComments.schema';
 
 /**
  * TODO: Check this way to define the schema

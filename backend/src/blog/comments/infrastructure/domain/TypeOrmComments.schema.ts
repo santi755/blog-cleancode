@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/typeOrmPosts.schema';
+import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/TypeOrmPosts.schema';
 
 /**
  * TODO: Check this way to define the schema

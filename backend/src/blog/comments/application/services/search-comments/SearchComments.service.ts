@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Comments } from 'src/blog/comments/domain/entities/comments.entity';
-import { CommentsRepository } from 'src/blog/comments/domain/interfaces/comments.repository.interface';
+import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
+import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
 
 @Injectable()
 export class SearchCommentsService {

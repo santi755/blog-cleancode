@@ -7,13 +7,15 @@ The objective of this project is to create a blog using clean architecture and D
 - backend: Built with NestJS following DDD and clean architecture principles.
 - frontend: ToDo
 
-## Directory naming conventions
+## Naming conventions
+
+### Directory naming conventions
 
 We are going to follow this for naming folders and directories:
 
 - Directories are all lowercamelcase. For example: `../domain/value-objects`.
 
-## File naming conventions
+### File naming conventions
 
 We are going to follow this for naming files:
 

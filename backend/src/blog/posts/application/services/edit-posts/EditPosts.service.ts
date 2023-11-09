@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { EditPostsDto } from 'src/blog/posts/domain/dtos/editPosts.dto';
-import { Posts } from 'src/blog/posts/domain/entities/posts.entity';
-import { PostsRepository } from 'src/blog/posts/domain/interfaces/posts.repository.interface';
+import { EditPostsDto } from 'src/blog/posts/domain/dtos/EditPosts.dto';
+import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
+import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()

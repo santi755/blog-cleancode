@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { SearchCommentsService } from 'src/blog/comments/application/services/search-comments/SearchComments.service';
-import { Comments } from 'src/blog/comments/domain/entities/comments.entity';
+import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
 
 @Controller('comments')
 export class SearchCommentsController {

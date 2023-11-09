@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PostsRepository } from 'src/blog/posts/domain/interfaces/posts.repository.interface';
-import { Posts } from 'src/blog/posts/domain/entities/posts.entity';
+import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
+import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
 
 @Injectable()
 export class EliminatePostsService {

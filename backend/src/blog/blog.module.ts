@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmPostsRepository } from './posts/infrastructure/repositories/typeOrmPosts.repository';
-import { TypeOrmCommentsRepository } from './comments/infrastructure/repositories/typeOrmComments.repository';
+import { TypeOrmPostsRepository } from './posts/infrastructure/repositories/TypeOrmPosts.repository';
+import { TypeOrmCommentsRepository } from './comments/infrastructure/repositories/TypeOrmComments.repository';
 import { CreatePostsService } from './posts/application/services/create-posts/CreatePosts.service';
 import { EditPostsService } from './posts/application/services/edit-posts/EditPosts.service';
 import { SearchPostsService } from './posts/application/services/search-posts/SearchPosts.service';
@@ -9,14 +9,14 @@ import { SearchCommentsService } from './comments/application/services/search-co
 import { CreateCommentsService } from './comments/application/services/create-comments/CreateComments.service';
 
 // Comments Use Cases
-import { CreateCommentsController } from './comments/presentation/createComments.controller';
-import { SearchCommentsController } from './comments/presentation/searchComments.controller';
+import { CreateCommentsController } from './comments/presentation/CreateComments.controller';
+import { SearchCommentsController } from './comments/presentation/SearchComments.controller';
 
 // Posts Use Cases
-import { CreatePostsController } from './posts/presentation/createPosts.controller';
-import { EditPostsController } from './posts/presentation/editPosts.controller';
-import { SearchPostsController } from './posts/presentation/searchPosts.controller';
-import { EliminatePostsController } from './posts/presentation/eliminatePosts.controller';
+import { CreatePostsController } from './posts/presentation/CreatePosts.controller';
+import { EditPostsController } from './posts/presentation/EditPosts.controller';
+import { SearchPostsController } from './posts/presentation/SearchPosts.controller';
+import { EliminatePostsController } from './posts/presentation/EliminatePosts.controller';
 
 @Module({
   providers: [

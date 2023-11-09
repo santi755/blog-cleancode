@@ -1,4 +1,4 @@
-import { Posts } from './posts.entity';
+import { Posts } from './Posts.entity';
 
 describe('PostEntity', () => {
   let post: Posts;

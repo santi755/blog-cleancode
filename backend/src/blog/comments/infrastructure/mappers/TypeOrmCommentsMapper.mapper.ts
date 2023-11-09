@@ -1,5 +1,5 @@
-import { Comments } from 'src/blog/comments/domain/entities/comments.entity';
-import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/typeOrmComments.schema';
+import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
+import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/TypeOrmComments.schema';
 
 export class TypeOrmCommentsMapper {
   static mapToDomainEntity(comment: TypeOrmComments) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Comments } from 'src/blog/comments/domain/entities/comments.entity';
+import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
 import { CreateCommentsDto } from 'src/blog/comments/domain/dtos/CreateComments.dto';
-import { CommentsRepository } from 'src/blog/comments/domain/interfaces/comments.repository.interface';
+import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()

@@ -1,10 +1,10 @@
 import { DataSource, Repository } from 'typeorm';
-import { CommentsRepository } from 'src/blog/comments/domain/interfaces/comments.repository.interface';
-import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/typeOrmComments.schema';
+import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
+import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/TypeOrmComments.schema';
 import { Injectable } from '@nestjs/common';
 import { CreateCommentsDto } from 'src/blog/comments/domain/dtos/CreateComments.dto';
-import { Comments } from 'src/blog/comments/domain/entities/comments.entity';
-import { TypeOrmCommentsMapper } from 'src/blog/comments/infrastructure/mappers/comments.mapper';
+import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
+import { TypeOrmCommentsMapper } from 'src/blog/comments/infrastructure/mappers/TypeOrmCommentsMapper.mapper';
 
 @Injectable()
 export class TypeOrmCommentsRepository

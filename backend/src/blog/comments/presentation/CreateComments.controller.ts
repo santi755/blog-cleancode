@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { Comments } from 'src/blog/comments/domain/entities/comments.entity';
+import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
 import { CreateCommentsService } from 'src/blog/comments/application/services/create-comments/CreateComments.service';
 import { CreateCommentsDto } from 'src/blog/comments/domain/dtos/CreateComments.dto';
 

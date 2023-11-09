@@ -1,7 +1,7 @@
-import { TypeOrmCommentsMapper } from 'src/blog/comments/infrastructure/mappers/comments.mapper';
-import { Posts } from 'src/blog/posts/domain/entities/posts.entity';
-import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/typeOrmPosts.schema';
-import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/typeOrmComments.schema';
+import { TypeOrmCommentsMapper } from 'src/blog/comments/infrastructure/mappers/TypeOrmCommentsMapper.mapper';
+import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
+import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/TypeOrmPosts.schema';
+import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/TypeOrmComments.schema';
 
 export class TypeOrmPostsMapper {
   static mapToDomainEntity(post: TypeOrmPosts): Posts {
