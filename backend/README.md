@@ -18,6 +18,7 @@ Decorator to avoid Onsave action in VSCode
 - [x] Change folder structure. Inside "blog" should be "Posts, Comments..." folders. And inside each one, the corresponding DDD layers ("application, domain, infrastructure, presentation"). (Vertical slicing)
 - [ ] Add a shared folder with common classes (like "ValueObject" and "Entity")
 - [ ] Refactor value objects to use "static of" and "static fromPrimitives" methods
+- [ ] Separate controller methods in different files. The name of the file should be the name of the controller method (e.g. "createPost.controller.ts")
 
 ### Following iterations
 
