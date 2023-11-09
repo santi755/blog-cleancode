@@ -1,16 +1,32 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 
+enum validStatus {
+  draft = 'draft',
+  published = 'published',
+  deleted = 'deleted',
+}
+
 export class PostsStatus {
   public readonly value: string;
   constructor(value: string) {
     this.value = value;
-
-    this.isValidStatus(value);
   }
 
-  private isValidStatus(status: string): void {
-    const validStatus = ['draft', 'published', 'deleted'];
-    if (!validStatus.includes(status)) {
+  /*
+   *  No validation explanation:
+   *  - We need to return the value from DB and we don't know if the value is a valid status.
+   *  - Imagine that we have these 3 valid values for a random VO: 'draft', 'published', 'deleted'. But in the future we remove the 'deleted' value.
+   *  - If we validate the value, we could not return the value from DB because it is not valid.
+   */
+  public static fromPrimitive(value: string): PostsStatus {
+    return new PostsStatus(value);
+  }
+
+  /**
+   *  This method is used to create a new PostsStatus from a string.
+   */
+  public static of(value: string): PostsStatus {
+    if (!validStatus[value]) {
       throw new HttpException(
         {
           status: HttpStatus.BAD_REQUEST,
@@ -20,20 +36,13 @@ export class PostsStatus {
         HttpStatus.BAD_REQUEST,
       );
     }
-  }
-
-  // TODO: Check bien - Se llama antes de insertar en la base de datos
-  /*
-  public static of(params: { value: string }): PostsStatus {
-    this.isValidStatus(params.value);
-    return new PostsStatus(params.value);
-  }
-  */
-
-  // TODO: Check bien - Recoge datos sin hacer una comprorbación
-  /*
-  public static fromPrimitives(value: string): PostsStatus {
     return new PostsStatus(value);
   }
-  */
+
+  /**
+   *  This method is used to compare two PostsStatus.
+   */
+  equals(status: PostsStatus): boolean {
+    return this.value === status.value;
+  }
 }

@@ -20,7 +20,7 @@ export class Posts {
     status,
     comments = [],
   }: {
-    id: string;
+    id: string | null;
     publishedAt: Date;
     editedAt: Date;
     title: string;
@@ -28,12 +28,12 @@ export class Posts {
     status: string;
     comments?: Comments[];
   }) {
-    this.id = new UuidVO(id);
+    this.id = id ? UuidVO.of(id) : UuidVO.generate();
     this.publishedAt = publishedAt;
     this.editedAt = editedAt;
     this.title = title;
     this.content = content;
-    this.status = new PostsStatus(status);
+    this.status = PostsStatus.of(status);
     this.comments = comments;
   }
 
@@ -66,7 +66,7 @@ export class Posts {
   }
 
   set statusValue(status: string) {
-    this.status = new PostsStatus(status);
+    this.status = PostsStatus.of(status);
   }
 
   set contentValue(content: string) {

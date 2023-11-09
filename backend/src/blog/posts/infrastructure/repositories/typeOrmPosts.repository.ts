@@ -41,13 +41,13 @@ export class TypeOrmPostsRepository
         content: createPostsDto.content,
         status: createPostsDto.status,
       });
+
+      const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
+      const createdPost = await this.save(ormPost);
+      return TypeOrmPostsMapper.mapToDomainEntity(createdPost);
     } catch (error) {
       return error;
     }
-
-    const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
-    const createdPost = await this.save(ormPost);
-    return TypeOrmPostsMapper.mapToDomainEntity(createdPost);
   }
 
   async edit(editPostsDto: EditPostsDto): Promise<Posts | null> {
