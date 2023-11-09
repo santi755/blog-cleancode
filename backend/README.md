@@ -6,10 +6,6 @@ This is a simple explanation of the layers of the application and the behavior b
 
 ![alt text](./docs/ddd-layers.png 'DDD Layers')
 
-## Folder structure
-
-Decorator to avoid Onsave action in VSCode
-
 ## ToDo
 
 ### Domain functions
