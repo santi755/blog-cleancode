@@ -1,7 +1,12 @@
 import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
-import { CreateCommentsDto } from 'src/blog/comments/domain/dtos/CreateComments.dto';
+
+export interface CreateCommentsParams {
+  postId: string;
+  content: string;
+  author: string;
+}
 
 export interface CommentsRepository {
   search: (id: string) => Promise<Comments | null>;
-  add: (createCommentsDto: CreateCommentsDto) => Promise<Comments>;
+  add: (comment: Comments) => Promise<Comments>;
 }

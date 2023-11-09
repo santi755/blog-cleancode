@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreatePostsDto } from 'src/blog/posts/domain/dtos/CreatePosts.dto';
 import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
-import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
+import {
+  CreatePostsParams,
+  PostsRepository,
+} from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 
 @Injectable()
 export class CreatePostsService {
@@ -12,9 +14,18 @@ export class CreatePostsService {
     this.postsRepository = postsRepository;
   }
 
-  create(createPostsDto: CreatePostsDto): Promise<Posts> {
+  create({ title, content, status }: CreatePostsParams): Promise<Posts> {
     try {
-      return this.postsRepository.add(createPostsDto);
+      const post: Posts = new Posts({
+        id: null,
+        publishedAt: new Date(),
+        editedAt: new Date(),
+        title: title,
+        content: content,
+        status: status,
+      });
+
+      return this.postsRepository.add(post);
     } catch (error) {
       throw new Error(error);
     }

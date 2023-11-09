@@ -15,8 +15,9 @@ This is a simple explanation of the layers of the application and the behavior b
 - [x] Separate controller methods in different files. The name of the file should be the name of the controller method (e.g. "createPost.controller.ts")
 - [x] Add a shared folder with common classes (like "ValueObject")
 - [x] Refactor value objects to use "static of" and "static fromPrimitives" methods
+- [x] Use DTOs in the controller methods and remove from service and repository methods
+- [x] Add DTO validation
 - [ ] Create errors from NestJS exceptions (e.g. BadRequestException)
-- [ ] Use DTOs in the controller methods and remove from service and repository methods
 
 ### Following iterations
 

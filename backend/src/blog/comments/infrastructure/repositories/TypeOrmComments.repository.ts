@@ -2,7 +2,6 @@ import { DataSource, Repository } from 'typeorm';
 import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
 import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/TypeOrmComments.schema';
 import { Injectable } from '@nestjs/common';
-import { CreateCommentsDto } from 'src/blog/comments/domain/dtos/CreateComments.dto';
 import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
 import { TypeOrmCommentsMapper } from 'src/blog/comments/infrastructure/mappers/TypeOrmCommentsMapper.mapper';
 
@@ -29,23 +28,14 @@ export class TypeOrmCommentsRepository
     }
   }
 
-  async add(createCommentsDto: CreateCommentsDto): Promise<Comments> {
-    let comment: Comments;
-
+  async add(comment: Comments): Promise<Comments> {
     try {
-      comment = new Comments({
-        id: null,
-        postId: createCommentsDto.postId,
-        createdAt: new Date(),
-        author: createCommentsDto.author,
-        content: createCommentsDto.content,
-      });
+      const ormComment = TypeOrmCommentsMapper.mapToOrmEntity(comment);
+      const createdComment = await this.save(ormComment);
+
+      return TypeOrmCommentsMapper.mapToDomainEntity(createdComment);
     } catch (error) {
       return error;
     }
-
-    const ormComment = TypeOrmCommentsMapper.mapToOrmEntity(comment);
-    const createdComment = await this.save(ormComment);
-    return TypeOrmCommentsMapper.mapToDomainEntity(createdComment);
   }
 }

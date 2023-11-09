@@ -2,8 +2,6 @@ import { DataSource, Repository } from 'typeorm';
 import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/TypeOrmPosts.schema';
 import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
-import { CreatePostsDto } from 'src/blog/posts/domain/dtos/CreatePosts.dto';
-import { EditPostsDto } from 'src/blog/posts/domain/dtos/EditPosts.dto';
 import { Injectable } from '@nestjs/common';
 import { TypeOrmPostsMapper } from 'src/blog/posts/infrastructure/mappers/TypeOrmPostsMapper.mapper';
 
@@ -30,60 +28,34 @@ export class TypeOrmPostsRepository
     }
   }
 
-  async add(createPostsDto: CreatePostsDto): Promise<Posts | null> {
-    let post: Posts;
+  async add(post: Posts): Promise<Posts | null> {
     try {
-      post = new Posts({
-        id: null,
-        publishedAt: new Date(),
-        editedAt: new Date(),
-        title: createPostsDto.title,
-        content: createPostsDto.content,
-        status: createPostsDto.status,
-      });
-
       const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
       const createdPost = await this.save(ormPost);
+
       return TypeOrmPostsMapper.mapToDomainEntity(createdPost);
     } catch (error) {
       return error;
     }
   }
 
-  async edit(editPostsDto: EditPostsDto): Promise<Posts | null> {
-    let post: Posts;
+  async edit(post: Posts): Promise<Posts | null> {
     try {
-      post = await this.search(editPostsDto.id);
-      post.titleValue = editPostsDto.title;
-      post.contentValue = editPostsDto.content;
-      post.statusValue = editPostsDto.status;
-      post.editedAtValue = editPostsDto.editedAt;
+      const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
+      const updatedPost = await this.save(ormPost);
 
-      if (!post) {
-        return null;
-      }
+      return TypeOrmPostsMapper.mapToDomainEntity(updatedPost);
     } catch (error) {
       return error;
     }
-
-    const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
-    const updatedPost = await this.save(ormPost);
-    return TypeOrmPostsMapper.mapToDomainEntity(updatedPost);
   }
 
-  async eliminate(id: string): Promise<void> {
-    let post: Posts;
+  async eliminate(post: Posts): Promise<void> {
     try {
-      post = await this.search(id);
-
-      if (!post) {
-        return null;
-      }
+      const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
+      await this.remove(ormPost);
     } catch (error) {
       return error;
     }
-
-    const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
-    await this.remove(ormPost);
   }
 }

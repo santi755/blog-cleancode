@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { EditPostsDto } from 'src/blog/posts/domain/dtos/EditPosts.dto';
+import { EditPostsParams } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
 import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -12,9 +12,23 @@ export class EditPostsService {
     this.postsRepository = postsRepository;
   }
 
-  edit(editPostsDto: EditPostsDto): Promise<Posts> {
+  async edit({ id, title, content, status }: EditPostsParams): Promise<Posts> {
     try {
-      return this.postsRepository.edit(editPostsDto);
+      try {
+        const post: Posts = await this.postsRepository.search(id);
+        post.titleValue = title;
+        post.contentValue = content;
+        post.statusValue = status;
+        post.editedAtValue = new Date();
+
+        if (!post) {
+          return null;
+        }
+
+        return this.postsRepository.edit(post);
+      } catch (error) {
+        return error;
+      }
     } catch (error) {
       throw new Error(error);
     }

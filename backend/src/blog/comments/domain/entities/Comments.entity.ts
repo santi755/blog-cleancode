@@ -20,7 +20,7 @@ export class Comments {
     content: string;
     createdAt: Date;
   }) {
-    this.id = new UuidVO(id);
+    this.id = id ? UuidVO.of(id) : UuidVO.generate();
     this.postId = new UuidVO(postId);
     this.author = author;
     this.content = content;

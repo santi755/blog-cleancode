@@ -11,9 +11,13 @@ export class EliminatePostsService {
     this.postsRepository = postsRepository;
   }
 
-  eliminate(postId: string): Promise<void> {
+  async eliminate(postId: string): Promise<void> {
     try {
-      return this.postsRepository.eliminate(postId);
+      const post = await this.postsRepository.search(postId);
+
+      if (!post) return null;
+
+      return this.postsRepository.eliminate(post);
     } catch (error) {
       throw new Error(error);
     }

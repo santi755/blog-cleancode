@@ -1,4 +1,4 @@
-import { EditPostsDto } from './editPosts.dto';
+import { EditPostsDto } from './EditPosts.dto';
 
 describe('PostsDto', () => {
   it('should be defined', () => {
