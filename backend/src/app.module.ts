@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { BlogModule } from './blog/blog.module';
-import { PersonalDashboardModule } from './personal-dashboard/personal-dashboard.module';
+import { PersonalDashboardModule } from './dashboard/personal-dashboard.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from '../config/typeOrmConfig.service';
 import { TypeOrmConfigModule } from '../config/typeOrmconfig.module';

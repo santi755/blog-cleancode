@@ -8,7 +8,7 @@ This is a simple explanation of the layers of the application and the behavior b
 
 ## ToDo
 
-### Domain functions
+### Blog
 
 - [x] Remove Comments.service and use CommentRepository inside each service instead (DDD)
 - [x] Change folder structure. Inside "blog" should be "Posts, Comments..." folders. And inside each one, the corresponding DDD layers ("application, domain, infrastructure, presentation"). (Vertical slicing)
@@ -18,6 +18,13 @@ This is a simple explanation of the layers of the application and the behavior b
 - [x] Use DTOs in the controller methods and remove from service and repository methods
 - [x] Add DTO validation
 - [ ] Create errors from NestJS exceptions (e.g. BadRequestException)
+
+### Personal dashboard
+
+Create a personal dashboard with the following features:
+
+- [ ] Add Passport Auth (Oauth2)
+      ...
 
 ### Following iterations
 
