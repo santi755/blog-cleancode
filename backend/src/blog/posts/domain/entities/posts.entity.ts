@@ -1,5 +1,5 @@
-import { UuidVO } from 'src/shared/domain/value-objects/Uuid.vo';
-import { PostsStatus } from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
+import { UuidVO } from 'src/shared/domain/value-objects/uuid.vo';
+import { PostsStatus } from 'src/blog/posts/domain/value-objects/postsStatus.vo';
 import { Comments } from 'src/blog/comments/domain/entities/comments.entity';
 
 export class Posts {

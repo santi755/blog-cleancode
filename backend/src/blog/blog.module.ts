@@ -9,7 +9,8 @@ import { SearchCommentsService } from './comments/application/services/search-co
 import { CreateCommentsService } from './comments/application/services/create-comments/CreateComments.service';
 
 // Comments Use Cases
-import { CommentsController } from './comments/presentation/comments.controller';
+import { CreateCommentsController } from './comments/presentation/createComments.controller';
+import { SearchCommentsController } from './comments/presentation/searchComments.controller';
 
 // Posts Use Cases
 import { CreatePostsController } from './posts/presentation/createPosts.controller';
@@ -39,7 +40,8 @@ import { EliminatePostsController } from './posts/presentation/eliminatePosts.co
     EditPostsController,
     SearchPostsController,
     EliminatePostsController,
-    CommentsController,
+    CreateCommentsController,
+    SearchCommentsController,
   ],
 })
 export class BlogModule {}
