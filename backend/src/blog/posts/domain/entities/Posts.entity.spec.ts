@@ -1,3 +1,4 @@
+import { validate } from 'uuid';
 import { Posts } from './Posts.entity';
 
 describe('PostEntity', () => {
@@ -7,7 +8,7 @@ describe('PostEntity', () => {
 
   it('should create a post', () => {
     post = new Posts({
-      id: '',
+      id: null,
       publishedAt: newDate,
       editedAt: newDate,
       title: 'title',
@@ -22,10 +23,9 @@ describe('PostEntity', () => {
   });
 
   it('should return the correct posts values', () => {
-    const uuidformatRegex =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+    const validUuid = validate(post.idValue);
 
-    expect(post.idValue).toMatch(uuidformatRegex);
+    expect(validUuid).toBeTruthy();
     expect(post.publishedAtValue).toEqual(newDate);
     expect(post.editedAtValue).toEqual(newDate);
     expect(post.titleValue).toEqual('title');
