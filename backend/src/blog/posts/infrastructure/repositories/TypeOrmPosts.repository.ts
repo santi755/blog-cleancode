@@ -2,7 +2,7 @@ import { DataSource, Repository } from 'typeorm';
 import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/TypeOrmPosts.schema';
 import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { TypeOrmPostsMapper } from 'src/blog/posts/infrastructure/mappers/TypeOrmPostsMapper.mapper';
 
 @Injectable()
@@ -24,7 +24,13 @@ export class TypeOrmPostsRepository
 
       return TypeOrmPostsMapper.mapToDomainEntity(post);
     } catch (error) {
-      throw new Error(error);
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error searching post.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
@@ -35,7 +41,13 @@ export class TypeOrmPostsRepository
 
       return TypeOrmPostsMapper.mapToDomainEntity(createdPost);
     } catch (error) {
-      return error;
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error creating post.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
@@ -46,7 +58,13 @@ export class TypeOrmPostsRepository
 
       return TypeOrmPostsMapper.mapToDomainEntity(updatedPost);
     } catch (error) {
-      return error;
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error editing post.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
@@ -55,7 +73,13 @@ export class TypeOrmPostsRepository
       const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
       await this.remove(ormPost);
     } catch (error) {
-      return error;
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error eliminating post.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }
