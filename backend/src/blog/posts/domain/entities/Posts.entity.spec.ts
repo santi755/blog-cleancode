@@ -36,7 +36,7 @@ describe('PostEntity', () => {
   it('should throw an error if the status is not valid', () => {
     expect(() => {
       post = new Posts({
-        id: '',
+        id: null,
         publishedAt: newDate,
         editedAt: newDate,
         title: 'title',
