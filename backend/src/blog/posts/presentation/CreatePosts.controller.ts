@@ -1,6 +1,6 @@
 import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
 import { CreatePostsService } from 'src/blog/posts/application/services/create-posts/CreatePosts.service';
-import { CreatePostsDto } from 'src/blog/posts/domain/dtos/CreatePosts.dto';
+import { CreatePostsRequestDto } from 'src/blog/posts/presentation/CreatePosts.dto';
 import {
   Body,
   Controller,
@@ -17,7 +17,9 @@ export class CreatePostsController {
 
   @Post()
   @UsePipes(new ValidationPipe())
-  async createPost(@Body() createPostsDto: CreatePostsDto): Promise<Posts> {
+  async createPost(
+    @Body() createPostsDto: CreatePostsRequestDto,
+  ): Promise<Posts> {
     try {
       return await this.createPostsService.create(createPostsDto);
     } catch (error) {
