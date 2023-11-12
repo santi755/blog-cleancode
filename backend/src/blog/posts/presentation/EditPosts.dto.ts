@@ -1,15 +1,15 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateCommentsDto {
+export class EditPostsRequestDto {
   @IsNotEmpty()
   @IsString()
-  public readonly postId: string;
+  readonly title: string;
 
   @IsNotEmpty()
   @IsString()
-  public readonly author: string;
+  readonly content: string;
 
   @IsNotEmpty()
   @IsString()
-  public readonly content: string;
+  readonly status: string;
 }

@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
 import { CreateCommentsService } from 'src/blog/comments/application/services/create-comments/CreateComments.service';
-import { CreateCommentsDto } from 'src/blog/comments/domain/dtos/CreateComments.dto';
+import { CreateCommentsRequestDto } from 'src/blog/comments/presentation/CreateComments.dto';
 
 @Controller('comments')
 export class CreateCommentsController {
@@ -18,7 +18,7 @@ export class CreateCommentsController {
   @Post()
   @UsePipes(new ValidationPipe())
   async createComment(
-    @Body() createCommentsDto: CreateCommentsDto,
+    @Body() createCommentsDto: CreateCommentsRequestDto,
   ): Promise<Comments> {
     try {
       return await this.createCommentsService.create(createCommentsDto);
