@@ -4,6 +4,8 @@ import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
 import {
   Body,
   Controller,
+  HttpException,
+  HttpStatus,
   Param,
   Patch,
   UsePipes,
@@ -26,7 +28,13 @@ export class EditPostsController {
         ...editPostsDto,
       });
     } catch (error) {
-      return error;
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error editing post.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }

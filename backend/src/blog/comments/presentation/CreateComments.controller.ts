@@ -1,6 +1,8 @@
 import {
   Body,
   Controller,
+  HttpException,
+  HttpStatus,
   Post,
   UsePipes,
   ValidationPipe,
@@ -21,7 +23,13 @@ export class CreateCommentsController {
     try {
       return await this.createCommentsService.create(createCommentsDto);
     } catch (error) {
-      return error;
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error creating comment.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }

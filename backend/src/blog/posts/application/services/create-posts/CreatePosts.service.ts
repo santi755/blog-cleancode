@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
 import {
@@ -27,7 +27,13 @@ export class CreatePostsService {
 
       return this.postsRepository.add(post);
     } catch (error) {
-      throw new Error(error);
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error creating post.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }

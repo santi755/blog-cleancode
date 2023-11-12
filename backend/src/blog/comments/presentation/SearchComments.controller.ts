@@ -1,4 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+} from '@nestjs/common';
 import { SearchCommentsService } from 'src/blog/comments/application/services/search-comments/SearchComments.service';
 import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
 
@@ -13,7 +19,13 @@ export class SearchCommentsController {
     try {
       return await this.searchCommentsService.search(commentId);
     } catch (error) {
-      return error;
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error searching comment.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }

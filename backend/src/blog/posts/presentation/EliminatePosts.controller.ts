@@ -1,5 +1,11 @@
 import { EliminatePostsService } from 'src/blog/posts/application/services/eliminate-posts/EliminatePosts.service';
-import { Controller, Delete, Param } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  HttpException,
+  HttpStatus,
+  Param,
+} from '@nestjs/common';
 
 @Controller('posts')
 export class EliminatePostsController {
@@ -10,7 +16,13 @@ export class EliminatePostsController {
     try {
       return await this.eliminatePostsService.eliminate(postId);
     } catch (error) {
-      return error;
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error eliminating post.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }

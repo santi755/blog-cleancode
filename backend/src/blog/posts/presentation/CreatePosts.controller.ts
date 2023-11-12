@@ -4,6 +4,8 @@ import { CreatePostsDto } from 'src/blog/posts/domain/dtos/CreatePosts.dto';
 import {
   Body,
   Controller,
+  HttpException,
+  HttpStatus,
   Post,
   UsePipes,
   ValidationPipe,
@@ -19,7 +21,13 @@ export class CreatePostsController {
     try {
       return await this.createPostsService.create(createPostsDto);
     } catch (error) {
-      return error;
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error creating post.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }

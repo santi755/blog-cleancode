@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
 import {
   CommentsRepository,
@@ -32,7 +32,13 @@ export class CreateCommentsService {
 
       return this.commentsRepository.add(comment);
     } catch (error) {
-      throw new Error(error);
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: 'Error creating comment.',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }
