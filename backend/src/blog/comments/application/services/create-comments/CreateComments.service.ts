@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
+import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 import {
   CommentsRepository,
   CreateCommentsParams,

@@ -1,4 +1,4 @@
-import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
+import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 
 export interface CreatePostsParams {
   title: string;

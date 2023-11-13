@@ -7,7 +7,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
+import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 import { CreateCommentsService } from 'src/blog/comments/application/services/create-comments/CreateComments.service';
 import { CreateCommentsRequestDto } from 'src/blog/comments/presentation/CreateComments.dto';
 

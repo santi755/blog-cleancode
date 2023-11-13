@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
+import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import {
   CreatePostsParams,
   PostsRepository,

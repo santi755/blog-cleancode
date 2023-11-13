@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
-import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
+import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 
 @Injectable()
 export class EliminatePostsService {
