@@ -1,6 +1,6 @@
 import { EditPostsService } from 'src/blog/posts/application/services/edit-posts/EditPosts.service';
 import { EditPostsRequestDto } from 'src/blog/posts/presentation/EditPosts.dto';
-import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
+import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import {
   Body,
   Controller,

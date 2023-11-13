@@ -1,6 +1,6 @@
 import { UuidVO } from 'src/shared/domain/value-objects/Uuid.vo';
 
-export class Comments {
+export default class Comments {
   private readonly id: UuidVO;
   private readonly postId: UuidVO;
   private author: string;

@@ -1,4 +1,4 @@
-import { Posts } from 'src/blog/posts/domain/entities/Posts.entity';
+import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import { CreatePostsService } from 'src/blog/posts/application/services/create-posts/CreatePosts.service';
 import { CreatePostsRequestDto } from 'src/blog/posts/presentation/CreatePosts.dto';
 import {

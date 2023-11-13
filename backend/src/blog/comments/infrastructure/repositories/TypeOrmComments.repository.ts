@@ -2,7 +2,7 @@ import { DataSource, Repository } from 'typeorm';
 import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
 import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/TypeOrmComments.schema';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
+import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 import { TypeOrmCommentsMapper } from 'src/blog/comments/infrastructure/mappers/TypeOrmCommentsMapper.mapper';
 
 @Injectable()

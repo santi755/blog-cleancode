@@ -1,8 +1,8 @@
 import { UuidVO } from 'src/shared/domain/value-objects/Uuid.vo';
 import { PostsStatus } from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
-import { Comments } from 'src/blog/comments/domain/entities/Comments.entity';
+import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 
-export class Posts {
+export default class Posts {
   private readonly id: UuidVO;
   private publishedAt: Date;
   private editedAt: Date;
