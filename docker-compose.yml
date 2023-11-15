@@ -1,0 +1,34 @@
+version: "3"
+services:
+  blog-cleancode-backend:
+    container_name: blog-cleancode-backend
+    image: blog-cleancode-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 8080:8080
+    environment:
+      - DB_ENGINE=mysql
+      - DB_PORT=3306
+      - DB_HOST=mysql
+      - DB_NAME=db-blog-cleancode
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_SYNCHRONIZE=true
+    depends_on:
+      - mysql
+  mysql:
+    container_name: blog-cleancode-mysql-8
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db-blog-cleancode
+      - MYSQL_ALLOW_EMPTY_PASSWORD="no"
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
