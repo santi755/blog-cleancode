@@ -1,10 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
-import {
-  CreatePostsParams,
-  PostsRepository,
-} from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
+import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 
 @Injectable()
 export class CreatePostsService {
@@ -14,17 +11,17 @@ export class CreatePostsService {
     this.postsRepository = postsRepository;
   }
 
-  create({ title, content, status }: CreatePostsParams): Promise<Posts> {
+  create(id, publishedAt, editedAt, title, content, status): Promise<Posts> {
     try {
-      const post: Posts = new Posts({
-        id: null,
-        publishedAt: new Date(),
-        editedAt: new Date(),
-        title: title,
-        content: content,
-        status: status,
-      });
-
+      const post = Posts.create(
+        id,
+        publishedAt,
+        editedAt,
+        title,
+        content,
+        status,
+      );
+      console.log('post: ', post);
       return this.postsRepository.add(post);
     } catch (error) {
       throw new HttpException(

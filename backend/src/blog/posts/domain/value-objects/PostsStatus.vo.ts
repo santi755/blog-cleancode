@@ -1,4 +1,5 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
+import { ValueObject } from 'src/shared/domain/value-objects/ValueObject';
 
 enum validStatus {
   draft = 'draft',
@@ -6,10 +7,13 @@ enum validStatus {
   deleted = 'deleted',
 }
 
-export class PostsStatus {
-  public readonly value: string;
-  constructor(value: string) {
-    this.value = value;
+export default class PostsStatus extends ValueObject<string> {
+  protected constructor(value: string) {
+    super(value);
+  }
+
+  public static generate(): PostsStatus {
+    return new PostsStatus(validStatus.draft);
   }
 
   /*

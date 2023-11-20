@@ -1,5 +1,18 @@
 # Clean architecture Blog
 
+## Run the project
+
+You will need to have installed docker
+
+```bash
+docker-compose build
+docker-compose up
+```
+
+Backend application will be running on http://localhost:8080
+
+### Backend
+
 ## Objective
 
 The objective of this project is to create a blog using clean architecture and DDD. The project is divided in two parts:

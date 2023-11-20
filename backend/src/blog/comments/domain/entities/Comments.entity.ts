@@ -1,61 +1,25 @@
-import { UuidVO } from 'src/shared/domain/value-objects/Uuid.vo';
+import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
+import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
+import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 
 export default class Comments {
-  private readonly id: UuidVO;
-  private readonly postId: UuidVO;
-  private author: string;
-  private content: string;
-  private createdAt: Date;
+  id: CommentsId;
+  postId: PostsId;
+  author: string;
+  content: string;
+  createdAt: CustomDate;
 
-  constructor({
-    id,
-    postId,
-    author,
-    content,
-    createdAt,
-  }: {
-    id: string;
-    postId: string;
-    author: string;
-    content: string;
-    createdAt: Date;
-  }) {
-    this.id = id ? UuidVO.of(id) : UuidVO.generate();
-    this.postId = new UuidVO(postId);
+  constructor(
+    id: CommentsId,
+    postId: PostsId,
+    author: string,
+    content: string,
+    createdAt: CustomDate,
+  ) {
+    this.id = id;
+    this.postId = postId;
     this.author = author;
     this.content = content;
-    this.createdAt = createdAt;
-  }
-
-  get idValue(): string {
-    return this.id.value;
-  }
-
-  get postIdValue(): string {
-    return this.postId.value;
-  }
-
-  get authorValue(): string {
-    return this.author;
-  }
-
-  get contentValue(): string {
-    return this.content;
-  }
-
-  get createdAtValue(): Date {
-    return this.createdAt;
-  }
-
-  set authorValue(author: string) {
-    this.author = author;
-  }
-
-  set contentValue(content: string) {
-    this.content = content;
-  }
-
-  set createdAtValue(createdAt: Date) {
     this.createdAt = createdAt;
   }
 }

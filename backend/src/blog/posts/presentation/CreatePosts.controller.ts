@@ -1,3 +1,5 @@
+import PostsStatus from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
+import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import { CreatePostsService } from 'src/blog/posts/application/services/create-posts/CreatePosts.service';
 import { CreatePostsRequestDto } from 'src/blog/posts/presentation/CreatePosts.dto';
@@ -10,6 +12,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 
 @Controller('posts')
 export class CreatePostsController {
@@ -21,7 +24,18 @@ export class CreatePostsController {
     @Body() createPostsDto: CreatePostsRequestDto,
   ): Promise<Posts> {
     try {
-      return await this.createPostsService.create(createPostsDto);
+      const postId = PostsId.generate();
+      const postPublishedAt = CustomDate.generate();
+      const postEditedAt = CustomDate.generate();
+      const postsStatus = PostsStatus.generate();
+      return await this.createPostsService.create(
+        postId,
+        postPublishedAt,
+        postEditedAt,
+        createPostsDto.title,
+        createPostsDto.content,
+        postsStatus,
+      );
     } catch (error) {
       throw new HttpException(
         {

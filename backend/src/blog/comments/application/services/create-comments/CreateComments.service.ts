@@ -22,13 +22,16 @@ export class CreateCommentsService {
     author,
   }: CreateCommentsParams): Promise<Comments> {
     try {
-      const comment = new Comments({
+      const comment = null;
+      /*
+      new Comments({
         id: null,
         postId: postId,
         createdAt: new Date(),
         author: author,
         content: content,
       });
+      */
 
       return this.commentsRepository.add(comment);
     } catch (error) {

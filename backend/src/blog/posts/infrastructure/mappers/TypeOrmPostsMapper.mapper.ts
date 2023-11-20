@@ -4,33 +4,11 @@ import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/TypeOrmPosts.
 import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/TypeOrmComments.schema';
 
 export class TypeOrmPostsMapper {
-  static mapToDomainEntity(post: TypeOrmPosts): Posts {
-    return new Posts({
-      id: post.id,
-      publishedAt: post.publishedAt,
-      editedAt: post.editedAt,
-      title: post.title,
-      content: post.content,
-      status: post.status,
-    });
+  static mapToDomainEntity(post: any): null {
+    return null;
   }
 
-  static mapToOrmEntity(post: Posts): TypeOrmPosts {
-    // TODO: Refactor this. No one is going to understand this.
-    const ormComments: TypeOrmComments[] = post.commentsValue
-      ? post.commentsValue.map((comment) => {
-          return TypeOrmCommentsMapper.mapToOrmEntity(comment);
-        })
-      : [];
-
-    return {
-      id: post.idValue,
-      publishedAt: post.publishedAtValue,
-      editedAt: post.editedAtValue,
-      title: post.titleValue,
-      content: post.contentValue,
-      status: post.statusValue,
-      comments: ormComments,
-    };
+  static mapToOrmEntity(post: any): null {
+    return null;
   }
 }
