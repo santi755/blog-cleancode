@@ -15,10 +15,6 @@ export class EditPostsService {
   async edit({ id, title, content, status }: EditPostsParams): Promise<Posts> {
     try {
       const post: Posts = await this.postsRepository.search(id);
-      post.titleValue = title;
-      post.contentValue = content;
-      post.statusValue = status;
-      post.editedAtValue = new Date();
 
       if (!post) {
         return null;

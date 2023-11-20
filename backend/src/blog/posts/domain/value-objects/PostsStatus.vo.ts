@@ -6,7 +6,7 @@ enum validStatus {
   deleted = 'deleted',
 }
 
-export class PostsStatus {
+export default class PostsStatus {
   public readonly value: string;
   constructor(value: string) {
     this.value = value;

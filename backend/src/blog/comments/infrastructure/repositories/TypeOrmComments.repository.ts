@@ -3,11 +3,10 @@ import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments
 import { TypeOrmComments } from 'src/blog/comments/infrastructure/domain/TypeOrmComments.schema';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import Comments from 'src/blog/comments/domain/entities/Comments.entity';
-import { TypeOrmCommentsMapper } from 'src/blog/comments/infrastructure/mappers/TypeOrmCommentsMapper.mapper';
 
 @Injectable()
 export class TypeOrmCommentsRepository
-  extends Repository<TypeOrmComments>
+  extends Repository<Comments>
   implements CommentsRepository
 {
   constructor(private dataSource: DataSource) {
@@ -16,6 +15,7 @@ export class TypeOrmCommentsRepository
 
   async search(id: string): Promise<Comments | null> {
     try {
+      /*
       const comment = await this.findOneBy({ id });
 
       if (!comment) {
@@ -23,6 +23,8 @@ export class TypeOrmCommentsRepository
       }
 
       return TypeOrmCommentsMapper.mapToDomainEntity(comment);
+      */
+      return null;
     } catch (error) {
       throw new HttpException(
         {
@@ -34,12 +36,15 @@ export class TypeOrmCommentsRepository
     }
   }
 
-  async add(comment: Comments): Promise<Comments> {
+  async add(comment: Comments): Promise<Comments | null> {
     try {
+      /*
       const ormComment = TypeOrmCommentsMapper.mapToOrmEntity(comment);
       const createdComment = await this.save(ormComment);
 
       return TypeOrmCommentsMapper.mapToDomainEntity(createdComment);
+      */
+      return null;
     } catch (error) {
       throw new HttpException(
         {

@@ -1,3 +1,3 @@
-import { UuidVO } from 'src/shared/domain/value-objects/Uuid.vo';
+import { Uuid } from 'src/shared/domain/value-objects/Uuid.vo';
 
-export default class PostsId extends UuidVO {}
+export default class PostsId extends Uuid {}

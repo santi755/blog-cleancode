@@ -2,20 +2,20 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 import { v4 as uuidV4, validate } from 'uuid';
 import { ValueObject } from './ValueObject';
 
-export class UuidVO extends ValueObject<string> {
+export class Uuid extends ValueObject<string> {
   protected constructor(value: string) {
     super(value);
   }
 
-  public static generate(): UuidVO {
-    return new UuidVO(uuidV4());
+  public static generate(): Uuid {
+    return new Uuid(uuidV4());
   }
 
-  public static fromPrimitive(value: string): UuidVO {
-    return new UuidVO(value);
+  public static fromPrimitive(value: string): Uuid {
+    return new Uuid(value);
   }
 
-  public static of(value: string): UuidVO {
+  public static of(value: string): Uuid {
     if (!validate(value)) {
       throw new HttpException(
         {
@@ -25,10 +25,10 @@ export class UuidVO extends ValueObject<string> {
         HttpStatus.BAD_REQUEST,
       );
     }
-    return new UuidVO(value);
+    return new Uuid(value);
   }
 
-  equals(uuid: UuidVO): boolean {
+  equals(uuid: Uuid): boolean {
     return this.value === uuid.value;
   }
 }

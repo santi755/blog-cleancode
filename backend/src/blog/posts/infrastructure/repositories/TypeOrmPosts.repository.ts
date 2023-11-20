@@ -3,11 +3,10 @@ import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.reposito
 import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/TypeOrmPosts.schema';
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { TypeOrmPostsMapper } from 'src/blog/posts/infrastructure/mappers/TypeOrmPostsMapper.mapper';
 
 @Injectable()
 export class TypeOrmPostsRepository
-  extends Repository<TypeOrmPosts>
+  extends Repository<Posts>
   implements PostsRepository
 {
   constructor(private dataSource: DataSource) {
@@ -22,7 +21,7 @@ export class TypeOrmPostsRepository
         return null;
       }
 
-      return TypeOrmPostsMapper.mapToDomainEntity(post);
+      return null;
     } catch (error) {
       throw new HttpException(
         {
@@ -36,10 +35,13 @@ export class TypeOrmPostsRepository
 
   async add(post: Posts): Promise<Posts | null> {
     try {
-      const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
+      /*
+      const ormPost =
       const createdPost = await this.save(ormPost);
 
       return TypeOrmPostsMapper.mapToDomainEntity(createdPost);
+      */
+      return null;
     } catch (error) {
       throw new HttpException(
         {
@@ -53,10 +55,13 @@ export class TypeOrmPostsRepository
 
   async edit(post: Posts): Promise<Posts | null> {
     try {
+      /*
       const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
       const updatedPost = await this.save(ormPost);
 
       return TypeOrmPostsMapper.mapToDomainEntity(updatedPost);
+      */
+      return null;
     } catch (error) {
       throw new HttpException(
         {
@@ -70,8 +75,11 @@ export class TypeOrmPostsRepository
 
   async eliminate(post: Posts): Promise<void> {
     try {
+      /*
       const ormPost = TypeOrmPostsMapper.mapToOrmEntity(post);
       await this.remove(ormPost);
+      */
+      return null;
     } catch (error) {
       throw new HttpException(
         {
