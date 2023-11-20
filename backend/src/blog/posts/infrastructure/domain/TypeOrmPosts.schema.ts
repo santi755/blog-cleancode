@@ -1,22 +1,36 @@
+import PostsStatus from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
+import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import { EntitySchema } from 'typeorm';
+import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 
-export const TypeOrmPosts = new EntitySchema<Posts>({
+// export const TypeOrmPosts = new EntitySchema<Posts>({
+export const TypeOrmPosts = new EntitySchema({
   name: Posts.name,
   tableName: 'posts',
-  target: Posts,
+  // target: Posts,
   columns: {
     id: {
       type: String,
       primary: true,
+      transformer: {
+        from: (value: string) => PostsId.of(value),
+        to: (value: PostsId) => value.value,
+      },
     },
     publishedAt: {
       type: Date,
-      createDate: true,
+      transformer: {
+        from: (value: Date) => CustomDate.of(value),
+        to: (value: CustomDate) => value.value,
+      },
     },
     editedAt: {
       type: Date,
-      updateDate: true,
+      transformer: {
+        from: (value: Date) => CustomDate.of(value),
+        to: (value: CustomDate) => value.value,
+      },
     },
     title: {
       type: String,
@@ -26,40 +40,10 @@ export const TypeOrmPosts = new EntitySchema<Posts>({
     },
     status: {
       type: String,
+      transformer: {
+        from: (value: string) => PostsStatus.of(value),
+        to: (value: PostsStatus) => value.value,
+      },
     },
   },
 });
-
-/**
- * TODO: Check this way to define the schema
- *  - https://github.com/typeorm/typeorm/issues/10217
- */
-/*
-@Entity('posts')
-export class TypeOrmPosts {
-  @PrimaryGeneratedColumn('uuid')
-  public id: string;
-
-  @CreateDateColumn()
-  public publishedAt: Date;
-
-  @UpdateDateColumn()
-  public editedAt: Date;
-
-  @Column()
-  public title: string;
-
-  @Column()
-  public content: string;
-
-  @Column({
-    type: 'enum',
-    enum: ['draft', 'published', 'unpublished'],
-    default: 'draft',
-  })
-  status: string;
-
-  @OneToMany(() => TypeOrmComments, (comment) => comment.post)
-  comments: TypeOrmComments[];
-}
-*/

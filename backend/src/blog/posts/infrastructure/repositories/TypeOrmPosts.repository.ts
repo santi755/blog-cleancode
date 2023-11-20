@@ -34,23 +34,7 @@ export class TypeOrmPostsRepository
   }
 
   async add(post: Posts): Promise<Posts | null> {
-    try {
-      /*
-      const ormPost =
-      const createdPost = await this.save(ormPost);
-
-      return TypeOrmPostsMapper.mapToDomainEntity(createdPost);
-      */
-      return null;
-    } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Error creating post.',
-        },
-        HttpStatus.BAD_REQUEST,
-      );
-    }
+    return await this.save(post);
   }
 
   async edit(post: Posts): Promise<Posts | null> {

@@ -1,11 +1,14 @@
 import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
+import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
+import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 import { EntitySchema } from 'typeorm';
 
-export const TypeOrmComments = new EntitySchema<Comments>({
+// export const TypeOrmComments = new EntitySchema<Comments>({
+export const TypeOrmComments = new EntitySchema({
   name: Comments.name,
   tableName: 'comments',
-  target: Comments,
+  // target: Comments,
   columns: {
     id: {
       type: String,
@@ -17,10 +20,17 @@ export const TypeOrmComments = new EntitySchema<Comments>({
     },
     createdAt: {
       type: Date,
-      createDate: true,
+      transformer: {
+        from: (value: Date) => CustomDate.of(value),
+        to: (value: CustomDate) => value.value,
+      },
     },
     postId: {
       type: String,
+      transformer: {
+        from: (value: string) => PostsId.of(value),
+        to: (value: PostsId) => value.value,
+      },
     },
     author: {
       type: String,
@@ -30,32 +40,3 @@ export const TypeOrmComments = new EntitySchema<Comments>({
     },
   },
 });
-
-/**
- * TODO: Check this way to define the schema
- *  - https://github.com/typeorm/typeorm/issues/10217
- */
-/*
-@Entity('comments')
-export class TypeOrmComments {
-  @PrimaryGeneratedColumn('uuid')
-  public id: string;
-
-  @CreateDateColumn()
-  public createdAt: Date;
-
-  @Column()
-  public author: string;
-
-  @Column()
-  public content: string;
-
-  @Column({ type: 'uuid' })
-  postId: string;
-
-  @ManyToOne(() => TypeOrmPosts, (post) => post.comments, {
-    onDelete: 'CASCADE',
-  })
-  post?: TypeOrmPosts;
-}
-*/

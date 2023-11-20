@@ -1,26 +1,21 @@
 import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
 import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
+import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 
 export default class Comments {
-  readonly id: CommentsId;
-  readonly postId: PostsId;
-  readonly author: string;
-  readonly content: string;
-  readonly createdAt: Date;
+  id: CommentsId;
+  postId: PostsId;
+  author: string;
+  content: string;
+  createdAt: CustomDate;
 
-  constructor({
-    id,
-    postId,
-    author,
-    content,
-    createdAt,
-  }: {
-    id: CommentsId;
-    postId: PostsId;
-    author: string;
-    content: string;
-    createdAt: Date;
-  }) {
+  constructor(
+    id: CommentsId,
+    postId: PostsId,
+    author: string,
+    content: string,
+    createdAt: CustomDate,
+  ) {
     this.id = id;
     this.postId = postId;
     this.author = author;
