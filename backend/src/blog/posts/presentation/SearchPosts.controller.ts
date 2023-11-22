@@ -7,7 +7,7 @@ export class SearchPostsController {
   constructor(private readonly searchPostsService: SearchPostsService) {}
 
   // TODO: What HttpCode(HttpStatus.OK) does?
-  @HttpCode(HttpStatus.OK)
+  // @HttpCode(HttpStatus.OK)
   @Get(':postId')
   async searchPosts(@Param('postId') postId: string): Promise<Posts> {
     return await this.searchPostsService.search(postId);

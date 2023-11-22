@@ -6,8 +6,6 @@ import { CreatePostsRequestDto } from 'src/blog/posts/presentation/CreatePosts.d
 import {
   Body,
   Controller,
-  HttpException,
-  HttpStatus,
   Post,
   UsePipes,
   ValidationPipe,
@@ -27,7 +25,7 @@ export class CreatePostsController {
       const postId = PostsId.generate();
       const postPublishedAt = CustomDate.generate();
       const postEditedAt = CustomDate.generate();
-      const postsStatus = PostsStatus.generate();
+      const postsStatus = PostsStatus.of(createPostsDto.status);
       return await this.createPostsService.create(
         postId,
         postPublishedAt,
@@ -37,13 +35,14 @@ export class CreatePostsController {
         postsStatus,
       );
     } catch (error) {
-      throw new HttpException(
+      throw error;
+      /*throw new HttpException(
         {
           status: HttpStatus.BAD_REQUEST,
-          error: 'Error creating post.',
+          error,
         },
         HttpStatus.BAD_REQUEST,
-      );
+      );*/
     }
   }
 }
