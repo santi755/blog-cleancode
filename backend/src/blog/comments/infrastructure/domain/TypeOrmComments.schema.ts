@@ -4,7 +4,6 @@ import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 import { EntitySchema } from 'typeorm';
 
-// export const TypeOrmComments = new EntitySchema<Comments>({
 export const TypeOrmComments = new EntitySchema({
   name: Comments.name,
   tableName: 'comments',
