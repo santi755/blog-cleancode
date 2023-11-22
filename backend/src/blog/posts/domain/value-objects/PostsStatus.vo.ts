@@ -12,10 +12,6 @@ export default class PostsStatus extends ValueObject<string> {
     super(value);
   }
 
-  public static generate(): PostsStatus {
-    return new PostsStatus(validStatus.draft);
-  }
-
   /*
    *  No validation explanation:
    *  - We need to return the value from DB and we don't know if the value is a valid status.

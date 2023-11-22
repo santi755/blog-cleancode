@@ -21,7 +21,6 @@ export class CreatePostsService {
         content,
         status,
       );
-      console.log('post: ', post);
       return this.postsRepository.add(post);
     } catch (error) {
       throw new HttpException(

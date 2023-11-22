@@ -1,5 +1,4 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { EditPostsParams } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -12,13 +11,23 @@ export class EditPostsService {
     this.postsRepository = postsRepository;
   }
 
-  async edit({ id, title, content, status }: EditPostsParams): Promise<Posts> {
+  async edit(
+    id,
+    publishedAt,
+    editedAt,
+    title,
+    content,
+    status,
+  ): Promise<Posts> {
     try {
-      const post: Posts = await this.postsRepository.search(id);
-
-      if (!post) {
-        return null;
-      }
+      const post = Posts.create(
+        id,
+        publishedAt,
+        editedAt,
+        title,
+        content,
+        status,
+      );
 
       return this.postsRepository.edit(post);
     } catch (error) {
