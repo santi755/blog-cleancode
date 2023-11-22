@@ -1,4 +1,5 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
@@ -14,16 +15,6 @@ export class SearchCommentsService {
   }
 
   search(commentId: string): Promise<Comments> {
-    try {
-      return this.commentsRepository.search(commentId);
-    } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Error searching comment.',
-        },
-        HttpStatus.BAD_REQUEST,
-      );
-    }
+    return this.commentsRepository.search(CommentsId.of(commentId));
   }
 }

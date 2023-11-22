@@ -21,7 +21,11 @@ export class CreateCommentsController {
     @Body() createCommentsDto: CreateCommentsRequestDto,
   ): Promise<Comments> {
     try {
-      return await this.createCommentsService.create(createCommentsDto);
+      return await this.createCommentsService.create(
+        createCommentsDto.author,
+        createCommentsDto.content,
+        createCommentsDto.postId,
+      );
     } catch (error) {
       throw new HttpException(
         {

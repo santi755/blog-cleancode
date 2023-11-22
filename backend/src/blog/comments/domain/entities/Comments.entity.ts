@@ -22,4 +22,8 @@ export default class Comments {
     this.content = content;
     this.createdAt = createdAt;
   }
+
+  static create(id, postId, author, content, createdAt): Comments {
+    return new Comments(id, postId, author, content, createdAt);
+  }
 }
