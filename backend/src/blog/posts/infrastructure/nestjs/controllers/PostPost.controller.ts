@@ -1,6 +1,6 @@
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
-import { CreatePostsService } from 'src/blog/posts/application/services/create-posts/CreatePosts.service';
-import { CreatePostsRequestDto } from 'src/blog/posts/presentation/CreatePosts.dto';
+import CreatePosts from '../../../application/use-cases/CreatePosts.usecase';
+import { CreatePostsRequestDto } from 'src/blog/posts/infrastructure/nestjs/controllers/Posts.dto';
 import {
   Body,
   Controller,
@@ -10,16 +10,14 @@ import {
 } from '@nestjs/common';
 
 @Controller('posts')
-export class CreatePostsController {
-  constructor(private readonly createPostsService: CreatePostsService) {}
+export default class CreatePostsController {
+  constructor(readonly createPosts: CreatePosts) {}
 
   @Post()
   @UsePipes(new ValidationPipe())
-  async createPost(
-    @Body() createPostsDto: CreatePostsRequestDto,
-  ): Promise<Posts> {
+  async create(@Body() createPostsDto: CreatePostsRequestDto): Promise<Posts> {
     try {
-      return await this.createPostsService.create(
+      return await this.createPosts.execute(
         createPostsDto.title,
         createPostsDto.content,
         createPostsDto.status,

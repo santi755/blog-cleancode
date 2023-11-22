@@ -5,21 +5,17 @@ import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.reposito
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 
 @Injectable()
-export class EliminatePostsService {
+export default class EliminatePosts {
   postsRepository: PostsRepository;
 
   constructor(@InjectRepository(Posts) postsRepository: PostsRepository) {
     this.postsRepository = postsRepository;
   }
 
-  async eliminate(id: string): Promise<void> {
-    try {
-      const post = await this.postsRepository.search(PostsId.of(id));
-      if (!post) return;
+  async execute(id: string): Promise<void> {
+    const post = await this.postsRepository.search(PostsId.of(id));
+    if (!post) return;
 
-      return this.postsRepository.eliminate(post);
-    } catch (error) {
-      return error;
-    }
+    return await this.postsRepository.eliminate(post);
   }
 }

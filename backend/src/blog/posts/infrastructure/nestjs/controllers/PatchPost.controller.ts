@@ -1,5 +1,5 @@
-import { EditPostsService } from 'src/blog/posts/application/services/edit-posts/EditPosts.service';
-import { EditPostsRequestDto } from 'src/blog/posts/presentation/EditPosts.dto';
+import EditPosts from 'src/blog/posts/application/use-cases/EditPosts.usecase';
+import { EditPostsRequestDto } from 'src/blog/posts/infrastructure/nestjs/controllers/Posts.dto';
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import {
   Body,
@@ -13,17 +13,17 @@ import {
 } from '@nestjs/common';
 
 @Controller('posts')
-export class EditPostsController {
-  constructor(private readonly editPostsService: EditPostsService) {}
+export default class EditPostsController {
+  constructor(private readonly editPosts: EditPosts) {}
 
   @Patch(':postId')
   @UsePipes(new ValidationPipe())
-  async editPost(
+  async edit(
     @Param('postId') postsId: string,
     @Body() editPostsDto: EditPostsRequestDto,
   ): Promise<Posts> {
     try {
-      return await this.editPostsService.edit(
+      return await this.editPosts.execute(
         postsId,
         editPostsDto.title,
         editPostsDto.content,
