@@ -1,22 +1,22 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmPostsRepository } from './posts/infrastructure/repositories/TypeOrmPosts.repository';
 import { TypeOrmCommentsRepository } from './comments/infrastructure/repositories/TypeOrmComments.repository';
-import { CreatePostsService } from './posts/application/services/create-posts/CreatePosts.service';
-import { EditPostsService } from './posts/application/services/edit-posts/EditPosts.service';
-import { SearchPostsService } from './posts/application/services/search-posts/SearchPosts.service';
-import { EliminatePostsService } from './posts/application/services/eliminate-posts/EliminatePosts.service';
-import { SearchCommentsService } from './comments/application/services/search-comments/SearchComments.service';
-import { CreateCommentsService } from './comments/application/services/create-comments/CreateComments.service';
+import CreatePosts from './posts/application/use-cases/CreatePosts.usecase';
+import EditPosts from './posts/application/use-cases/EditPosts.usecase';
+import EliminatePosts from './posts/application/use-cases/EliminatePosts.usecase';
+import SearchPosts from './posts/application/use-cases/SearchPosts.usecase';
+import SearchComments from './comments/application/use-cases/SearchComments.usecase';
+import CreateComments from './comments/application/use-cases/CreateComments.usecase';
 
 // Comments Use Cases
-import { CreateCommentsController } from './comments/presentation/CreateComments.controller';
-import { SearchCommentsController } from './comments/presentation/SearchComments.controller';
+import CreateCommentsController from './comments/infrastructure/nestjs/controllers/PostComment.controller';
+import SearchCommentsController from './comments/infrastructure/nestjs/controllers/GetComment.controller';
 
 // Posts Use Cases
-import { CreatePostsController } from './posts/presentation/CreatePosts.controller';
-import { EditPostsController } from './posts/presentation/EditPosts.controller';
-import { SearchPostsController } from './posts/presentation/SearchPosts.controller';
-import { EliminatePostsController } from './posts/presentation/EliminatePosts.controller';
+import CreatePostsController from './posts/infrastructure/nestjs/controllers/PostPost.controller';
+import EditPostsController from './posts/infrastructure/nestjs/controllers/PatchPost.controller';
+import SearchPostsController from './posts/infrastructure/nestjs/controllers/GetPost.controller';
+import EliminatePostsController from './posts/infrastructure/nestjs/controllers/DeletePost.controller';
 
 @Module({
   providers: [
@@ -28,12 +28,12 @@ import { EliminatePostsController } from './posts/presentation/EliminatePosts.co
       provide: 'CommentsRepository',
       useClass: TypeOrmCommentsRepository,
     },
-    CreatePostsService,
-    EditPostsService,
-    SearchPostsService,
-    EliminatePostsService,
-    SearchCommentsService,
-    CreateCommentsService,
+    CreatePosts,
+    EditPosts,
+    EliminatePosts,
+    SearchPosts,
+    SearchComments,
+    CreateComments,
   ],
   controllers: [
     CreatePostsController,

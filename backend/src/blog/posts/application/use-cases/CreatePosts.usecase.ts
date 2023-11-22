@@ -7,26 +7,22 @@ import PostsStatus from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 
 @Injectable()
-export class CreatePostsService {
+export default class CreatePosts {
   postsRepository: PostsRepository;
 
   constructor(@InjectRepository(Posts) postsRepository: PostsRepository) {
     this.postsRepository = postsRepository;
   }
 
-  create(title, content, status): Promise<Posts> {
-    try {
-      const post = Posts.create(
-        PostsId.generate(),
-        CustomDate.generate(),
-        CustomDate.generate(),
-        title,
-        content,
-        PostsStatus.of(status),
-      );
-      return this.postsRepository.add(post);
-    } catch (error) {
-      return error;
-    }
+  async execute(title, content, status): Promise<Posts> {
+    const post = Posts.create(
+      PostsId.generate(),
+      CustomDate.generate(),
+      CustomDate.generate(),
+      title,
+      content,
+      PostsStatus.of(status),
+    );
+    return await this.postsRepository.add(post);
   }
 }

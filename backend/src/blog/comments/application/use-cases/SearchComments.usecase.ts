@@ -5,7 +5,7 @@ import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
 
 @Injectable()
-export class SearchCommentsService {
+export default class SearchComments {
   commentsRepository: CommentsRepository;
 
   constructor(
@@ -14,7 +14,7 @@ export class SearchCommentsService {
     this.commentsRepository = commentsRepository;
   }
 
-  search(commentId: string): Promise<Comments> {
-    return this.commentsRepository.search(CommentsId.of(commentId));
+  async execute(commentId: string): Promise<Comments> {
+    return await this.commentsRepository.search(CommentsId.of(commentId));
   }
 }

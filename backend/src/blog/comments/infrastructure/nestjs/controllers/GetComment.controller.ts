@@ -5,19 +5,17 @@ import {
   HttpStatus,
   Param,
 } from '@nestjs/common';
-import { SearchCommentsService } from 'src/blog/comments/application/services/search-comments/SearchComments.service';
+import SearchComments from 'src/blog/comments/application/use-cases/SearchComments.usecase';
 import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 
 @Controller('comments')
-export class SearchCommentsController {
-  constructor(private readonly searchCommentsService: SearchCommentsService) {}
+export default class SearchCommentsController {
+  constructor(private readonly searchComments: SearchComments) {}
 
   @Get(':commentId')
-  async getCommentById(
-    @Param('commentId') commentId: string,
-  ): Promise<Comments> {
+  async getComment(@Param('commentId') commentId: string): Promise<Comments> {
     try {
-      return await this.searchCommentsService.search(commentId);
+      return await this.searchComments.execute(commentId);
     } catch (error) {
       throw new HttpException(
         {

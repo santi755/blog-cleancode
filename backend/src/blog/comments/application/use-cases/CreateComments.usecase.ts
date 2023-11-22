@@ -7,7 +7,7 @@ import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 
 @Injectable()
-export class CreateCommentsService {
+export default class CreateComments {
   commentsRepository: CommentsRepository;
 
   constructor(
@@ -16,7 +16,7 @@ export class CreateCommentsService {
     this.commentsRepository = commentsRepository;
   }
 
-  async create(author, content, postId): Promise<Comments | null> {
+  async execute(author, content, postId): Promise<Comments | null> {
     try {
       const comment = Comments.create(
         CommentsId.generate(),

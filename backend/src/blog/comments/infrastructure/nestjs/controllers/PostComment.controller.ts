@@ -8,20 +8,20 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import Comments from 'src/blog/comments/domain/entities/Comments.entity';
-import { CreateCommentsService } from 'src/blog/comments/application/services/create-comments/CreateComments.service';
-import { CreateCommentsRequestDto } from 'src/blog/comments/presentation/CreateComments.dto';
+import Createcomments from 'src/blog/comments/application/use-cases/CreateComments.usecase';
+import { CreateCommentsRequestDto } from 'src/blog/comments/infrastructure/nestjs/controllers/Comment.dto';
 
 @Controller('comments')
-export class CreateCommentsController {
-  constructor(private readonly createCommentsService: CreateCommentsService) {}
+export default class CreateCommentsController {
+  constructor(private readonly createcomments: Createcomments) {}
 
   @Post()
   @UsePipes(new ValidationPipe())
-  async createComment(
+  async PostComment(
     @Body() createCommentsDto: CreateCommentsRequestDto,
   ): Promise<Comments> {
     try {
-      return await this.createCommentsService.create(
+      return await this.createcomments.execute(
         createCommentsDto.author,
         createCommentsDto.content,
         createCommentsDto.postId,

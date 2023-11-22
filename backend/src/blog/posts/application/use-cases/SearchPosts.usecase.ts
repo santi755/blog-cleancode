@@ -5,14 +5,14 @@ import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.reposito
 import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 
 @Injectable()
-export class SearchPostsService {
+export default class SearchPosts {
   postsRepository: PostsRepository;
 
   constructor(@InjectRepository(Posts) postsRepository: PostsRepository) {
     this.postsRepository = postsRepository;
   }
 
-  search(id: string): Promise<Posts> {
-    return this.postsRepository.search(PostsId.of(id));
+  async execute(id: string): Promise<Posts> {
+    return await this.postsRepository.search(PostsId.of(id));
   }
 }
