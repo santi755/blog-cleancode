@@ -1,10 +1,10 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import Comments from 'src/blog/comments/domain/entities/Comments.entity';
-import {
-  CommentsRepository,
-  CreateCommentsParams,
-} from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
+import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
 import { InjectRepository } from '@nestjs/typeorm';
+import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
+import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
+import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 
 @Injectable()
 export class CreateCommentsService {
@@ -16,32 +16,19 @@ export class CreateCommentsService {
     this.commentsRepository = commentsRepository;
   }
 
-  async create({
-    postId,
-    content,
-    author,
-  }: CreateCommentsParams): Promise<Comments> {
+  async create(author, content, postId): Promise<Comments | null> {
     try {
-      const comment = null;
-      /*
-      new Comments({
-        id: null,
-        postId: postId,
-        createdAt: new Date(),
-        author: author,
-        content: content,
-      });
-      */
+      const comment = Comments.create(
+        CommentsId.generate(),
+        PostsId.of(postId),
+        author,
+        content,
+        CustomDate.generate(),
+      );
 
       return this.commentsRepository.add(comment);
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Error creating comment.',
-        },
-        HttpStatus.BAD_REQUEST,
-      );
+      return error;
     }
   }
 }
