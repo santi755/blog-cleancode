@@ -3,7 +3,7 @@ import SearchPosts from 'src/blog/posts/application/use-cases/SearchPosts.usecas
 import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller('posts')
-export default class SearchPostsController {
+export default class GetPostController {
   constructor(private readonly searchPosts: SearchPosts) {}
 
   // TODO: What HttpCode(HttpStatus.OK) does?

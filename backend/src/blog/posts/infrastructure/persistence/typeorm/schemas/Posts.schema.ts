@@ -4,7 +4,7 @@ import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import { EntitySchema } from 'typeorm';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 
-export const TypeOrmPosts = new EntitySchema<Posts>({
+export default new EntitySchema<Posts>({
   name: Posts.name,
   tableName: 'posts',
   target: Posts,

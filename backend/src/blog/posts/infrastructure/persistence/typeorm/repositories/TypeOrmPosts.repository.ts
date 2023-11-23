@@ -1,7 +1,6 @@
 import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import { DataSource, Repository } from 'typeorm';
 import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
-import { TypeOrmPosts } from 'src/blog/posts/infrastructure/domain/TypeOrmPosts.schema';
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import { Injectable } from '@nestjs/common';
 
@@ -11,7 +10,7 @@ export class TypeOrmPostsRepository
   implements PostsRepository
 {
   constructor(private dataSource: DataSource) {
-    super(TypeOrmPosts, dataSource.createEntityManager());
+    super(Posts, dataSource.createEntityManager());
   }
 
   async search(id: PostsId): Promise<Posts | null> {

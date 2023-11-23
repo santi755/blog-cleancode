@@ -12,7 +12,7 @@ import Createcomments from 'src/blog/comments/application/use-cases/CreateCommen
 import { CreateCommentsRequestDto } from 'src/blog/comments/infrastructure/nestjs/controllers/Comment.dto';
 
 @Controller('comments')
-export default class CreateCommentsController {
+export default class PostCommentController {
   constructor(private readonly createcomments: Createcomments) {}
 
   @Post()
