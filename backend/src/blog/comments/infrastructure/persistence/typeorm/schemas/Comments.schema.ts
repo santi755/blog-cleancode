@@ -3,6 +3,7 @@ import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
 import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 import { EntitySchema } from 'typeorm';
+import { ValueObjectTransformer } from 'src/shared/infrastructure/persistence/typeorm/transformers/ValueObjectTransformer';
 
 export default new EntitySchema<Comments>({
   name: Comments.name,
@@ -12,24 +13,15 @@ export default new EntitySchema<Comments>({
     id: {
       type: String,
       primary: true,
-      transformer: {
-        from: (value: string) => CommentsId.of(value),
-        to: (value: CommentsId) => value.value,
-      },
+      transformer: ValueObjectTransformer(CommentsId),
     },
     createdAt: {
       type: Date,
-      transformer: {
-        from: (value: Date) => CustomDate.of(value),
-        to: (value: CustomDate) => value.value,
-      },
+      transformer: ValueObjectTransformer(CustomDate),
     },
     postId: {
       type: String,
-      transformer: {
-        from: (value: string) => PostsId.of(value),
-        to: (value: PostsId) => value.value,
-      },
+      transformer: ValueObjectTransformer(PostsId),
     },
     author: {
       type: String,
