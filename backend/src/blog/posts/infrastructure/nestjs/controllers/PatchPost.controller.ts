@@ -13,7 +13,7 @@ import {
 } from '@nestjs/common';
 
 @Controller('posts')
-export default class EditPostsController {
+export default class PatchPostController {
   constructor(private readonly editPosts: EditPosts) {}
 
   @Patch(':postId')

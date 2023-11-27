@@ -3,8 +3,9 @@ import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import Posts from 'src/blog/posts/domain/entities/Posts.entity';
 import { EntitySchema } from 'typeorm';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
+import { ValueObjectTransformer } from 'src/shared/infrastructure/persistence/typeorm/transformers/ValueObjectTransformer';
 
-export const TypeOrmPosts = new EntitySchema<Posts>({
+export default new EntitySchema<Posts>({
   name: Posts.name,
   tableName: 'posts',
   target: Posts,
@@ -12,24 +13,15 @@ export const TypeOrmPosts = new EntitySchema<Posts>({
     id: {
       type: String,
       primary: true,
-      transformer: {
-        from: (value: string) => PostsId.of(value),
-        to: (value: PostsId) => value.value,
-      },
+      transformer: ValueObjectTransformer(PostsId),
     },
     publishedAt: {
       type: Date,
-      transformer: {
-        from: (value: Date) => CustomDate.of(value),
-        to: (value: CustomDate) => value.value,
-      },
+      transformer: ValueObjectTransformer(CustomDate),
     },
     editedAt: {
       type: Date,
-      transformer: {
-        from: (value: Date) => CustomDate.of(value),
-        to: (value: CustomDate) => value.value,
-      },
+      transformer: ValueObjectTransformer(CustomDate),
     },
     title: {
       type: String,
@@ -39,10 +31,7 @@ export const TypeOrmPosts = new EntitySchema<Posts>({
     },
     status: {
       type: String,
-      transformer: {
-        from: (value: string) => PostsStatus.of(value),
-        to: (value: PostsStatus) => value.value,
-      },
+      transformer: ValueObjectTransformer(PostsStatus),
     },
   },
 });

@@ -9,7 +9,7 @@ import SearchComments from 'src/blog/comments/application/use-cases/SearchCommen
 import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 
 @Controller('comments')
-export default class SearchCommentsController {
+export default class GetCommentController {
   constructor(private readonly searchComments: SearchComments) {}
 
   @Get(':commentId')

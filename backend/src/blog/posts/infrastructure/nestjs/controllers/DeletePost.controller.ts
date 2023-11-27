@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 
 @Controller('posts')
-export default class EliminatePostsController {
+export default class DeletePostController {
   constructor(private readonly eliminitePosts: EliminitePosts) {}
 
   @Delete(':postId')

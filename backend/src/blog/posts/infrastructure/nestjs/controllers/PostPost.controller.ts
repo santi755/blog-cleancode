@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 
 @Controller('posts')
-export default class CreatePostsController {
+export default class PostPostController {
   constructor(readonly createPosts: CreatePosts) {}
 
   @Post()
