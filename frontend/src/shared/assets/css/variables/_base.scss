@@ -1,0 +1,15 @@
+@use "sass:math";
+
+@function rem($size) {
+  $remSize: math.div($size, 16px);
+  //Default font size on html element is 100%, equivalent to 16px;
+  @return #{$remSize}rem;
+}
+
+
+$spacer: 1rem !default;
+
+// Acive colors
+$component-active-color: $white !default;
+$component-active-bg: $primary-active !default;
+

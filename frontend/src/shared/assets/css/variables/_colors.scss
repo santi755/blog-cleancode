@@ -1,0 +1,128 @@
+/*
+  Color Inventory
+*/
+$grey-scale-1: #000000;
+$grey-scale-2: #444444;
+$grey-scale-3: #b1b1b1;
+$grey-scale-4: #ced4da;
+$grey-scale-5: #ffffff;
+
+$background-color-1: #f4f4f4;
+$background-color-2: #f9f9f9;
+$stock-color-green: #53b79a;
+$stock-color-yellow: #d3b45a;
+$stock-color-red: #94212b;
+$stock-color-black: #000000;
+
+$opacity-black-1: rgba(0, 0, 0, 0.7);
+$opacity-black-2: rgba(0, 0, 0, 0.5);
+$opacity-black-3: rgba(0, 0, 0, 0.4);
+$opacity-black-4: rgba(0, 0, 0, 0.3);
+$opacity-black-5: rgba(0, 0, 0, 0.2);
+$opacity-black-6: rgba(206, 212, 218, 0.4);
+$opacity-correctly: rgba(23, 186, 142, 0.2);
+
+$solid-colors: (
+    'blue': #0081ff,
+    'indigo': #5e5ce6,
+    'purple': #7367f0,
+    'pink': #ff375f,
+    'red': #94212b,
+    'orange': #ff8a48,
+    'yellow': #d3b45a,
+    'green': #53b79a,
+    'slate': #242939,
+    'white': #ffffff
+);
+
+$blue: map-get($solid-colors, 'blue') !default;
+$dark-blue: map-get($solid-colors, 'dark-blue') !default;
+$indigo: map-get($solid-colors, 'indigo') !default;
+$purple: map-get($solid-colors, 'purple') !default;
+$pink: map-get($solid-colors, 'pink') !default;
+$red: map-get($solid-colors, 'red') !default;
+$orange: map-get($solid-colors, 'orange') !default;
+$yellow: map-get($solid-colors, 'yellow') !default;
+$green: map-get($solid-colors, 'green') !default;
+$slate: map-get($solid-colors, 'slate') !default;
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$primary: $black !default;
+$secondary: $gray-600 !default;
+$success: $green !default;
+$info: $indigo !default;
+$warning: $orange !default;
+$danger: $red !default;
+$light: $gray-500 !default;
+$dark: #28344a !default;
+
+$table-color-gray: #f2f2f2;
+$table-color-gray-light: #d9d9d9;
+
+$theme-colors: (
+    primary: $primary,
+    secondary: $secondary,
+    success: $success,
+    info: $info,
+    warning: $warning,
+    danger: $danger,
+    light: $light,
+    dark: $dark
+) !default;
+
+/*
+  Color Design Tokens
+*/
+$body-bg: $gray-200;
+$card-bg: $white;
+
+$body-color: $gray-800 !default;
+$heading-color: $black;
+$heading-semi-dark-color: $gray-800;
+$text-muted-color: $gray-600;
+$text-muted: $gray-600;
+
+$primary-active: $grey-scale-3;
+$primary-dark: darken($primary, 15);
+
+// Acive colors
+$component-active-color: $white !default;
+$component-active-bg: $primary-active !default;
+
+// Background
+$background-light: $gray-200;
+
+// Border
+$border-color: #f0f1f2;
+$border-color-light: rgba($gray-900, 0.06);
+$border-color-dark: rgba($gray-900, 0.25);
+$border-color-black: rgba($gray-900, 0.5);
+
+// Forms
+$input-color: $body-color;
+$label-color: $text-muted-color;
+$input-color-placeholder: $grey-scale-3;
+$input-border-color: #e1e5e8;
+
+// hover focus
+$hover-background: $gray-200;
+$active-background: $background-light;
+
+// personalization for this project
+$default-icons-color: #00b5e2 !default;
+$default-text-color: #10069f !default;
+
+// colors for dialogs/modals
+$background-color-modal-outer: rgba(0, 0, 0, 0.5);
+$background-color-modal: $white;

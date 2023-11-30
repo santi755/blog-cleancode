@@ -1,0 +1,356 @@
+html {
+    overflow: hidden;
+}
+
+.doubleTabsBox {
+    max-width: rem(668px);
+    button.v-tab {
+        background-color: $white;
+        padding: rem(8px);
+        border: rem(1px) $black solid;
+    }
+    .v-tabs {
+        position: relative;
+        z-index: 10;
+    }
+    .tabsTop {
+        top: 0.07rem;
+        height: rem(38px);
+        .v-slide-group {
+            &__container,
+            &__content {
+                height: rem(38px);
+            }
+        }
+        .v-tab {
+            min-width: rem(132px);
+            border-right: 0;
+            height: rem(38px);
+            &:last-child {
+                border-right: rem(1px) $black solid;
+            }
+            &.v-tab--selected {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    button.v-tab--selected {
+        background: $table-color-gray;
+        .v-tab__slider {
+            opacity: 0;
+        }
+        &:hover > .v-btn__overlay {
+            opacity: 0;
+        }
+    }
+
+    .v-window {
+        border: 1px $black solid;
+        .v-card {
+            background: $table-color-gray;
+            .block {
+                background: $white;
+                margin: rem(32px) rem(32px) rem(24px);
+                padding: rem(24px) rem(32px);
+                & ~ .block {
+                    margin-top: 0;
+                }
+                .v-label {
+                    margin-bottom: rem(16px);
+                    font-weight: 650;
+                }
+            }
+            .v-checkbox {
+                float: right;
+                margin: 0 rem(32px) rem(24px);
+                .v-checkbox-btn {
+                    min-height: auto;
+                    .v-selection-control__wrapper {
+                        height: rem(19px);
+                        width: rem(19px);
+                    }
+                    .v-selection-control__input {
+                        height: rem(19px);
+                        width: rem(19px);
+                        background: $white;
+                    }
+                }
+                .v-label {
+                    .body-small-medium {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tabsRight {
+    left: -0.1rem;
+    .v-tab {
+        min-width: rem(48px);
+        border-bottom: 0;
+        height: rem(46px);
+        justify-content: center;
+        &:last-child {
+            border-bottom: rem(1px) $black solid;
+        }
+        &.v-tab--selected {
+            border-left: 0;
+        }
+
+        background-color: $white;
+        padding: rem(8px);
+        border: rem(1px) $black solid;
+        button.v-tab--selected {
+            background: $table-color-gray;
+        }
+    }
+}
+
+.base-promise-dialog {
+    white-space: pre-line;
+}
+
+.v-card {
+    .trash,
+    .product-num {
+        position: absolute;
+        top: rem(12px);
+        padding: rem(6px);
+        border-radius: 50%;
+        height: rem(48px);
+        width: rem(48px);
+        text-align: center;
+    }
+    .trash {
+        right: rem(12px);
+        color: $white;
+        background: $black;
+        cursor: pointer;
+        &.disabled {
+            cursor: default;
+            opacity: 30%;
+        }
+    }
+    .product-num {
+        left: rem(12px);
+        background: rgba(255, 255, 255, 0.6);
+        line-height: rem(36px);
+    }
+}
+
+.loaded-options {
+    .gap-40 {
+        gap: rem(40px);
+    }
+    .v-card {
+        width: rem(321px);
+        height: rem(262px);
+        .video-box {
+            width: rem(275px);
+            height: rem(155px);
+        }
+        p {
+            font-style: normal;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            height: rem(44px);
+        }
+        .trash {
+            top: rem(24px);
+            right: rem(24px);
+        }
+    }
+}
+
+.selected-bg {
+    img {
+        object-fit: cover;
+    }
+}
+.loaded-options,
+.selected-bg {
+    .v-card {
+        display: inline-block;
+        .videoBox {
+            position: relative;
+            display: inline-block;
+            .controls {
+                color: transparent;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                &:not(.paused) {
+                    opacity: 0;
+                }
+            }
+            video {
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+.base-promise-dialog {
+    .base-promise-dialog__body.dialog--top {
+        width: rem(405px);
+        padding: rem(56px) rem(48px);
+        .d-block .d-flex {
+            flex-direction: row-reverse;
+            justify-content: flex-start !important;
+            button {
+                padding-right: rem(48px) !important;
+                padding-left: rem(48px) !important;
+                &:first-of-type {
+                    margin-left: rem(16px);
+                }
+                &:last-of-type {
+                    margin-left: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+.loaded-products {
+    margin-right: rem(-40px);
+    .v-card {
+        width: rem(200px);
+        .product-name,
+        .product-code {
+            font-style: normal;
+            overflow: hidden;
+        }
+    }
+    .product-list {
+        gap: rem(40px) 0;
+    }
+    .dropzone {
+        width: rem(40px);
+        height: rem(262px);
+        position: relative;
+    }
+    .expand-zone {
+        width: 0;
+        transition: width 0.3s ease-in-out;
+        &.expanded {
+            width: rem(240px);
+        }
+    }
+    .deleted {
+        transform: rotateY(90deg);
+        width: 0 !important;
+        margin-right: rem(-40px);
+    }
+    .deletable {
+        transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+        max-height: rem(262px) !important;
+    }
+    .v-window--show-arrows-on-hover {
+        button {
+            background: none;
+            box-shadow: none;
+            border-radius: 0;
+            border: solid black;
+            border-width: 0 rem(2px) rem(2px) 0;
+            width: 1rem;
+            height: 1rem;
+        }
+        .v-window__right {
+            transform: translateX(rem(200px)) rotate(-45deg);
+        }
+        .v-window__left {
+            transform: translateX(rem(-200px)) rotate(135deg);
+        }
+        &:hover {
+            .v-window__right {
+                transform: rotate(-45deg);
+            }
+            .v-window__left {
+                transform: rotate(135deg);
+            }
+        }
+        .v-btn__overlay {
+            opacity: 0;
+        }
+    }
+}
+
+.undraggable img {
+    user-drag: none;
+    -webkit-user-drag: none;
+}
+
+.product-selector {
+    width: rem(573px);
+    align-self: center;
+    padding: rem(40px);
+    .v-btn {
+        height: rem(46px);
+    }
+    .v-card {
+        width: rem(80px);
+        height: rem(154px);
+        .product-name {
+            max-height: rem(51px);
+        }
+        .product-name,
+        .product-code {
+            font-size: $font-size-body-xsmall;
+        }
+        .trash {
+            background-color: $black;
+            opacity: 0.5;
+            top: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.6rem;
+            height: rem(16px);
+            width: rem(16px);
+            padding: 0;
+        }
+    }
+    .prodbox {
+        gap: rem(9px);
+        overflow: overlay;
+        max-height: rem(350px);
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        &.topbox {
+            max-height: rem(350px);
+            &.fullheight {
+                max-height: rem(550px);
+            }
+        }
+        &.bottombox {
+            max-height: rem(200px);
+        }
+    }
+}
+
+.v-snackbar--variant-tonal {
+    background: $white;
+}
+
+.v-card {
+    .product-name {
+        font-style: normal;
+        font-weight: 650;
+        line-height: rem(17px);
+        text-transform: uppercase;
+        max-height: rem(34px);
+        overflow: hidden;
+    }
+    .product-code {
+        font-style: normal;
+        font-weight: 500;
+    }
+}

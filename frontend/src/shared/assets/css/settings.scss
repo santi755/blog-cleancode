@@ -1,0 +1,64 @@
+@use 'variables/variables' as *;
+
+/**
+ * src/assets/css/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+
+// https://next.vuetifyjs.com/features/sass-variables/
+@use 'vuetify/settings' with (
+    // Place SASS variable overrides here
+    $body-font-family: $font-family-base,
+    $border-radius-root: 0,
+    $app-bar-elevation: 0,
+    $menu-elevation: 0,
+    $typography: (
+        'h1': (
+            'size': $font-size-h1,
+            'weight': $font-weight-bold,
+            'line-height': $line-height-h1,
+            'text-transform': uppercase
+        ),
+        'h2': (
+            'size': $font-size-h2,
+            'weight': $font-weight-semi-md,
+            'line-height': $line-height-h2,
+            'text-transform': false
+        ),
+        'h3': (
+            'size': $font-size-h3,
+            'weight': $font-weight-semi-md,
+            'line-height': $line-height-h3,
+            'text-transform': false,
+            'letter-spacing': 0.125rem
+        ),
+        'h4': (
+            'size': $font-size-h4,
+            'weight': $font-weight-semi-md,
+            'line-height': $line-height-h4,
+            'text-transform': false,
+            'letter-spacing': 0.125rem
+        ),
+        'h5': (
+            'size': 1rem,
+            'weight': 650,
+            'line-height': 1.2rem,
+            'letter-spacing': 0.063rem
+        ),
+        'body-1': (
+            'size': $font-size-body-medium,
+            'weight': $font-weight-semi,
+            'line-height': $line-height-body-medium
+        ),
+        'body-2': (
+            'size': $font-size-body-light,
+            'weight': $font-weight-light,
+            'line-height': $line-height-body-light
+        ),
+        'button': (
+            'text-transform': initial
+        )
+    ),
+    $snackbar-wrapper-margin: 8rem 1rem 1rem
+);

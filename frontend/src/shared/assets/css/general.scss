@@ -1,0 +1,69 @@
+@import 'base/_load_fonts';
+@import 'variables/variables';
+@import 'functions/functions';
+@import 'mixins/mixins';
+@import 'base/reboot';
+@import 'utilities/utilities';
+
+@import 'base/_root_variables';
+@import 'pages/pages';
+
+// Respect the color of the parent element
+// https://css-tricks.com/cascading-svg-fill-color/
+.cnm-icon path, g, rect {
+    stroke: currentColor;
+}
+
+// List items get blurry after un-hiding
+// https://github.com/vuetifyjs/vuetify/issues/12890
+.v-navigation-drawer {
+    will-change: initial !important;
+    &__content {
+        padding-top: 32px;
+    }
+}
+
+// Style select content appended to body
+// https://next.vuetifyjs.com/en/api/v-select/#props-menu-props
+// https://next.vuetifyjs.com/en/api/v-menu/#props-content-class
+.locale-menu-content {
+    .v-list-item-title {
+        font-family: 'Futura Std';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        color: #000000;
+        text-transform: uppercase;
+    }
+}
+
+.v-field__outline__start,
+.v-field__outline__end {
+    opacity: 1 !important;
+}
+
+a {
+    text-decoration: auto;
+}
+
+.copy-to-clipboard {
+    @extend .link-alt;
+    cursor: pointer;
+    position: relative;
+    &:hover::after {
+        top: 50%;
+        content: '';
+        width: 16px;
+        height: 16px;
+        margin-left: 5px;
+        position: absolute;
+        background-size: cover;
+        transform: translateY(-50%);
+        background-image: url('/images/copy-to-clipboard/copy.svg');
+    }
+}
+
+.v-overlay.v-overlay--active.v-menu {
+    z-index: 9999 !important;
+}
