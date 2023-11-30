@@ -5,16 +5,32 @@ import AggregateRoot from 'src/shared/domain/aggregate/AggregateRoot';
 import Comment from 'src/blog/comments/domain/entities/Comment.entity';
 
 export default class Post extends AggregateRoot {
+  id: PostsId;
+  publishedAt: CustomDate;
+  editedAt: CustomDate;
+  title: string;
+  content: string;
+  status: PostsStatus;
+  comments?: Comment[] | null;
+
   constructor(
-    private id: PostsId,
-    private publishedAt: CustomDate,
-    private editedAt: CustomDate,
-    private title: string,
-    private content: string,
-    private status: PostsStatus,
-    private comments?: Comment[] | null,
+    id: PostsId,
+    publishedAt: CustomDate,
+    editedAt: CustomDate,
+    title: string,
+    content: string,
+    status: PostsStatus,
+    comments?: Comment[] | null,
   ) {
     super();
+
+    this.id = id;
+    this.publishedAt = publishedAt;
+    this.editedAt = editedAt;
+    this.title = title;
+    this.content = content;
+    this.status = status;
+    this.comments = comments;
   }
 
   static create(
@@ -26,5 +42,9 @@ export default class Post extends AggregateRoot {
     status: PostsStatus,
   ): Post {
     return new Post(id, publishedAt, editedAt, title, content, status);
+  }
+
+  addComment(comment: Comment): void {
+    this.comments = this.comments ? [...this.comments, comment] : [comment];
   }
 }
