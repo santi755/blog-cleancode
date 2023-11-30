@@ -1,14 +1,14 @@
 import PostsStatus from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
 import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
-import Posts from 'src/blog/posts/domain/entities/Posts.entity';
+import Post from 'src/blog/posts/domain/entities/Post.entity';
 import { EntitySchema } from 'typeorm';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 import { ValueObjectTransformer } from 'src/shared/infrastructure/persistence/typeorm/transformers/ValueObjectTransformer';
 
-export default new EntitySchema<Posts>({
-  name: Posts.name,
+export default new EntitySchema<Post>({
+  name: Post.name,
   tableName: 'posts',
-  target: Posts,
+  target: Post,
   columns: {
     id: {
       type: String,

@@ -1,14 +1,14 @@
-import Comments from 'src/blog/comments/domain/entities/Comments.entity';
+import Comment from 'src/blog/comments/domain/entities/Comment.entity';
 import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
 import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 import { EntitySchema } from 'typeorm';
 import { ValueObjectTransformer } from 'src/shared/infrastructure/persistence/typeorm/transformers/ValueObjectTransformer';
 
-export default new EntitySchema<Comments>({
-  name: Comments.name,
+export default new EntitySchema<Comment>({
+  name: Comment.name,
   tableName: 'comments',
-  target: Comments,
+  target: Comment,
   columns: {
     id: {
       type: String,

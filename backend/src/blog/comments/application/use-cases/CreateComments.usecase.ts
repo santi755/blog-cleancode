@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import Comments from 'src/blog/comments/domain/entities/Comments.entity';
+import Comment from 'src/blog/comments/domain/entities/Comment.entity';
 import { CommentsRepository } from 'src/blog/comments/domain/interfaces/Comments.repository.interface';
 import { InjectRepository } from '@nestjs/typeorm';
 import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
@@ -11,14 +11,14 @@ export default class CreateComments {
   commentsRepository: CommentsRepository;
 
   constructor(
-    @InjectRepository(Comments) commentsRepository: CommentsRepository,
+    @InjectRepository(Comment) commentsRepository: CommentsRepository,
   ) {
     this.commentsRepository = commentsRepository;
   }
 
-  async execute(author, content, postId): Promise<Comments | null> {
+  async execute(author, content, postId): Promise<Comment | null> {
     try {
-      const comment = Comments.create(
+      const comment = Comment.create(
         CommentsId.generate(),
         PostsId.of(postId),
         author,

@@ -21,11 +21,11 @@ import DeletePostController from './posts/infrastructure/nestjs/controllers/Dele
 @Module({
   providers: [
     {
-      provide: 'PostsRepository',
+      provide: 'PostRepository',
       useClass: TypeOrmPostsRepository,
     },
     {
-      provide: 'CommentsRepository',
+      provide: 'CommentRepository',
       useClass: TypeOrmCommentsRepository,
     },
     CreatePosts,

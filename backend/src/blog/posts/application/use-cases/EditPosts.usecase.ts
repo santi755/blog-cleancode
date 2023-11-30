@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import Posts from 'src/blog/posts/domain/entities/Posts.entity';
+import Post from 'src/blog/posts/domain/entities/Post.entity';
 import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
 import { InjectRepository } from '@nestjs/typeorm';
 import PostsStatus from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
@@ -10,12 +10,12 @@ import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 export default class EditPosts {
   postsRepository: PostsRepository;
 
-  constructor(@InjectRepository(Posts) postsRepository: PostsRepository) {
+  constructor(@InjectRepository(Post) postsRepository: PostsRepository) {
     this.postsRepository = postsRepository;
   }
 
-  async execute(id, title, content, status): Promise<Posts> {
-    const post = Posts.create(
+  async execute(id, title, content, status): Promise<Post> {
+    const post = Post.create(
       PostsId.of(id),
       CustomDate.generate(),
       CustomDate.generate(),

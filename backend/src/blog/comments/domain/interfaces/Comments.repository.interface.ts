@@ -1,5 +1,5 @@
 import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
-import Comments from 'src/blog/comments/domain/entities/Comments.entity';
+import Comment from 'src/blog/comments/domain/entities/Comment.entity';
 
 export interface CreateCommentsParams {
   postId: string;
@@ -8,6 +8,6 @@ export interface CreateCommentsParams {
 }
 
 export interface CommentsRepository {
-  search: (id: CommentsId) => Promise<Comments | null>;
-  add: (comment: Comments) => Promise<Comments>;
+  search: (id: CommentsId) => Promise<Comment | null>;
+  add: (comment: Comment) => Promise<Comment>;
 }

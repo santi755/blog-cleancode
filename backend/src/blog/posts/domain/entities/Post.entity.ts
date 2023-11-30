@@ -2,9 +2,9 @@ import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import PostsStatus from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 import AggregateRoot from 'src/shared/domain/aggregate/AggregateRoot';
-import Comments from 'src/blog/comments/domain/entities/Comments.entity';
+import Comment from 'src/blog/comments/domain/entities/Comment.entity';
 
-export default class Posts extends AggregateRoot {
+export default class Post extends AggregateRoot {
   constructor(
     private id: PostsId,
     private publishedAt: CustomDate,
@@ -12,7 +12,7 @@ export default class Posts extends AggregateRoot {
     private title: string,
     private content: string,
     private status: PostsStatus,
-    private comments?: Comments[] | null,
+    private comments?: Comment[] | null,
   ) {
     super();
   }
@@ -24,7 +24,7 @@ export default class Posts extends AggregateRoot {
     title: string,
     content: string,
     status: PostsStatus,
-  ): Posts {
-    return new Posts(id, publishedAt, editedAt, title, content, status);
+  ): Post {
+    return new Post(id, publishedAt, editedAt, title, content, status);
   }
 }
