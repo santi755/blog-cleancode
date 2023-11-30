@@ -1,6 +1,6 @@
 import EditPosts from 'src/blog/posts/application/use-cases/EditPosts.usecase';
 import { EditPostsRequestDto } from 'src/blog/posts/infrastructure/nestjs/controllers/Posts.dto';
-import Posts from 'src/blog/posts/domain/entities/Posts.entity';
+import Post from 'src/blog/posts/domain/entities/Post.entity';
 import {
   Body,
   Controller,
@@ -21,7 +21,7 @@ export default class PatchPostController {
   async edit(
     @Param('postId') postsId: string,
     @Body() editPostsDto: EditPostsRequestDto,
-  ): Promise<Posts> {
+  ): Promise<Post> {
     try {
       return await this.editPosts.execute(
         postsId,

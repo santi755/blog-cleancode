@@ -2,13 +2,13 @@ import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PostsRepository } from 'src/blog/posts/domain/interfaces/Posts.repository.interface';
-import Posts from 'src/blog/posts/domain/entities/Posts.entity';
+import Post from 'src/blog/posts/domain/entities/Post.entity';
 
 @Injectable()
 export default class EliminatePosts {
   postsRepository: PostsRepository;
 
-  constructor(@InjectRepository(Posts) postsRepository: PostsRepository) {
+  constructor(@InjectRepository(Post) postsRepository: PostsRepository) {
     this.postsRepository = postsRepository;
   }
 

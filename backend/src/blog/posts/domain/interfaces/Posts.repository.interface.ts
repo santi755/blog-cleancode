@@ -1,5 +1,5 @@
 import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
-import Posts from 'src/blog/posts/domain/entities/Posts.entity';
+import Post from 'src/blog/posts/domain/entities/Post.entity';
 
 export interface CreatePostsParams {
   title: string;
@@ -15,8 +15,8 @@ export interface EditPostsParams {
 }
 
 export interface PostsRepository {
-  search(id: PostsId): Promise<Posts | null>;
-  add(post: Posts): Promise<Posts>;
-  edit(post: Posts): Promise<Posts>;
-  eliminate(post: Posts): Promise<void>;
+  search(id: PostsId): Promise<Post | null>;
+  add(post: Post): Promise<Post>;
+  edit(post: Post): Promise<Post>;
+  eliminate(post: Post): Promise<void>;
 }

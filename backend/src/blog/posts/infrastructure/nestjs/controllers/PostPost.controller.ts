@@ -1,10 +1,10 @@
-import Posts from 'src/blog/posts/domain/entities/Posts.entity';
+import Post from 'src/blog/posts/domain/entities/Post.entity';
 import CreatePosts from '../../../application/use-cases/CreatePosts.usecase';
 import { CreatePostsRequestDto } from 'src/blog/posts/infrastructure/nestjs/controllers/Posts.dto';
 import {
   Body,
   Controller,
-  Post,
+  Post as PostMethod,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
@@ -13,9 +13,9 @@ import {
 export default class PostPostController {
   constructor(readonly createPosts: CreatePosts) {}
 
-  @Post()
+  @PostMethod()
   @UsePipes(new ValidationPipe())
-  async create(@Body() createPostsDto: CreatePostsRequestDto): Promise<Posts> {
+  async create(@Body() createPostsDto: CreatePostsRequestDto): Promise<Post> {
     try {
       return await this.createPosts.execute(
         createPostsDto.title,
