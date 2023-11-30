@@ -1,0 +1,149 @@
+// Background colors
+
+.background-color-1 {
+    background-color: $background-color-1;
+}
+.background-color-2 {
+    background-color: $background-color-2;
+}
+
+.background-opacity-black-1 {
+    background-color: $opacity-black-1;
+}
+.background-opacity-black-2 {
+    background-color: $opacity-black-2;
+}
+.background-opacity-black-3 {
+    background-color: $opacity-black-3;
+}
+.background-opacity-black-4 {
+    background-color: $opacity-black-4;
+}
+.background-opacity-black-5 {
+    background-color: $opacity-black-5;
+}
+.background-opacity-black-6 {
+    background-color: $opacity-black-6;
+}
+.background-opacity-correctly {
+    background-color: $opacity-correctly;
+}
+
+.black {
+    background-color: $black;
+}
+
+// Text colors
+
+.text-grey-scale-1 {
+    color: $grey-scale-1;
+}
+.text-grey-scale-2 {
+    color: $grey-scale-2;
+}
+.text-grey-scale-3 {
+    color: $grey-scale-3;
+}
+.text-grey-scale-4 {
+    color: $grey-scale-4;
+}
+.text-grey-scale-5 {
+    color: $grey-scale-5;
+}
+
+.text-stock-color-green {
+    color: $stock-color-green;
+}
+.text-stock-color-yellow {
+    color: $stock-color-yellow;
+}
+.text-stock-color-red {
+    color: $stock-color-red;
+}
+.text-stock-color-black {
+    color: $stock-color-black;
+}
+
+.text-opacity-black-1 {
+    color: $opacity-black-1;
+}
+.text-opacity-black-2 {
+    color: $opacity-black-2;
+}
+.text-opacity-black-3 {
+    color: $opacity-black-3;
+}
+.text-opacity-black-4 {
+    color: $opacity-black-4;
+}
+.text-opacity-black-5 {
+    color: $opacity-black-5;
+}
+.text-opacity-black-6 {
+    color: $opacity-black-6;
+}
+.text-opacity-correctly {
+    color: $opacity-correctly;
+}
+
+.text-black {
+    color: $black;
+}
+
+.bg-stock-color-green {
+    background-color: $stock-color-green;
+}
+.bg-stock-color-yellow {
+    background-color: $stock-color-yellow;
+}
+.bg-stock-color-red {
+    background-color: $stock-color-red;
+}
+.bg-stock-color-black {
+    background-color: $stock-color-black;
+}
+
+// Text colors based on theme color map
+@each $name, $value in $theme-colors {
+    .bg-#{$name} {
+        background-color: $value !important;
+    }
+    .text-#{$name} {
+        color: $value;
+    }
+}
+
+// Text and background based on solid colors map
+@each $name, $value in $solid-colors {
+    .#{$name},
+    .bg-#{$name} {
+        background-color: $value;
+    }
+    .text-#{$name} {
+        color: $value;
+    }
+}
+
+// background color opacity
+@each $colorName, $map in $opacity-map {
+    @each $name, $value in $map {
+        .#{$colorName}-#{$name} {
+            background-color: $value !important;
+        }
+    }
+}
+
+// off-white-color
+
+.bg-off-white {
+    background-color: #f2f3f8;
+}
+
+// general placeholder color
+input::placeholder,
+.v-field__input input::placeholder,
+input.v-field__input::placeholder,
+textarea.v-field__input::placeholder {
+    color: $input-color-placeholder !important;
+    opacity: 1 !important;
+}

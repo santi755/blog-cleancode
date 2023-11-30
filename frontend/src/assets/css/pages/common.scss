@@ -1,0 +1,72 @@
+/* for selected elements
+   need to add a v-icon element with class="icon--selected" inside the selected item
+   Example: <v-icon class="icon--selected" icon="check"/>
+*/
+.box--selected {
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        background: $black;
+        width: 100%;
+        height: 100%;
+        opacity: 0.7;
+        top: 0;
+        z-index: 4;
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        background: $white;
+        width: rem(48px);
+        height: rem(48px);
+        border-radius: 50%;
+        top: calc(50% - rem(24px));
+        left: calc(50% - rem(24px));
+        z-index: 5;
+    }
+
+    .icon--selected.v-icon {
+        display: inline-flex;
+        position: absolute;
+        width: rem(16px);
+        height: rem(11px);
+        top: calc(50% - rem(5.5px));
+        left: calc(50% - rem(8px));
+        z-index: 6;
+    }
+}
+
+.icon--selected.v-icon {
+    display: none;
+}
+
+/* for mark elements (Example: disabled elements)
+   need to add a v-icon element with class="icon--mark" inside the mark item
+   Example: <v-icon class="icon--mark" icon="closeThin"/>
+*/
+.box--mark {
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        background: $black;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        top: 0;
+        z-index: 4;
+    }
+
+    .icon--mark.v-icon {
+        display: inline-flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 6;
+        color: $white;
+    }
+}

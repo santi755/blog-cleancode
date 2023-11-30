@@ -32,3 +32,13 @@ services:
       - 3308:3306
     volumes:
       - ./mysql_data:/var/lib/mysql
+  blog-cleancode-frontend:
+    container_name: blog-cleancode-frontend
+    image: blog-cleancode-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
+    depends_on:
+      - blog-cleancode-backend

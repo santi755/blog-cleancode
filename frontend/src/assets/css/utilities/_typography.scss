@@ -1,0 +1,167 @@
+// Headers
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+    // font-weight: $font-weight-normal;
+    color: $heading-color;
+    // line-height: $line-height-heading;
+}
+
+h1,
+.h1 {
+    font-size: $font-size-h1;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-h1;
+    text-transform: uppercase;
+}
+
+h2,
+.h2 {
+    font-size: $font-size-h2;
+    font-weight: $font-weight-semi-md;
+    line-height: $line-height-h2;
+}
+
+h3,
+.h3 {
+    font-size: $font-size-h3;
+    font-weight: $font-weight-semi-md;
+    line-height: $line-height-h3;
+    letter-spacing: $letter-spacing-h3;
+}
+
+h4,
+.h4 {
+    font-size: $font-size-h4;
+    font-weight: $font-weight-semi-md;
+    line-height: $line-height-h4;
+    letter-spacing: $letter-spacing-h4;
+}
+
+h5,
+.h5 {
+    font-size: $font-size-h5;
+    font-weight: $font-weight-semi-md;
+}
+
+h6,
+.h6 {
+    font-size: $font-size-h6;
+}
+
+// Body
+
+p {
+    font-size: $font-size-paragraph;
+    font-weight: $font-weight-light;
+    font-style: $font-style-paragraph;
+    line-height: $line-height-paragraph;
+}
+
+.body-bold {
+    font-size: $font-size-body-bold;
+    font-weight: $font-weight-semi-md;
+    line-height: $line-height-body-bold;
+    letter-spacing: $letter-spacing-body-bold;
+}
+
+.body-medium {
+    font-size: $font-size-body-medium;
+    font-weight: $font-weight-semi;
+    line-height: $line-height-body-medium;
+}
+
+.body-light {
+    font-size: $font-size-body-light;
+    font-weight: $font-weight-light;
+    line-height: $line-height-body-light;
+}
+
+.body-italic {
+    font-size: $font-size-body-italic;
+    font-weight: $font-weight-semi-md;
+    font-style: $font-style-body-italic;
+    line-height: $line-height-body-italic;
+}
+
+.body-extra {
+    font-size: $font-size-body-extra;
+    font-weight: $font-weight-semi-md;
+    font-style: $font-style-body-extra;
+    line-height: $line-height-body-extra;
+    color: $font-color-body-extra;
+}
+
+.body-bold-small {
+    font-size: $font-size-body-bold-small;
+    font-weight: $font-weight-semi-md;
+    line-height: $line-height-body-bold-small;
+    letter-spacing: $letter-spacing-body-bold-small;
+}
+
+.body-small-medium {
+    font-size: $font-size-body-small-medium;
+    font-weight: $font-weight-semi;
+    line-height: $line-height-body-small-medium;
+}
+
+.body-small {
+    font-size: $font-size-body-small;
+    font-weight: $font-weight-light;
+    line-height: $line-height-body-small;
+}
+
+//  Custom CSS for links
+.text-link {
+    font-style: $link-font-style;
+    font-size: $font-size-body-medium;
+    font-weight: $font-weight-semi;
+    line-height: $line-height-body-medium;
+    color: $link-color;
+    text-decoration: $link-decoration;
+    cursor: $link-cursor;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 1px;
+
+    @include hover {
+        color: $link-hover-color;
+        text-decoration: $link-hover-decoration;
+    }
+}
+
+.body-button {
+    font-weight: $font-weight-semi;
+    font-size: $font-size-h4;
+}
+
+// Extras
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: $font-family-base;
+}
+
+// .text-small {
+//   font-size: $font-size-sm;
+// }
+
+.link-alt {
+    color: $body-color;
+    &:hover {
+        color: $link-hover-color;
+    }
+}

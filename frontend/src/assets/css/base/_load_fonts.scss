@@ -1,0 +1,67 @@
+/* Light */
+
+@font-face {
+    font-family: 'Futura Std';
+    src: url('../fonts/FuturaStd-Light.woff2') format('woff2'),
+        url('../fonts/FuturaStd-Light.woff') format('woff'),
+        url('../fonts/FuturaStd-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura Std';
+    src: url('../fonts/FuturaStd-LightOblique.woff2') format('woff2'),
+        url('../fonts/FuturaStd-LightOblique.woff') format('woff'),
+        url('../fonts/FuturaStd-LightOblique.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+/* Medium */
+
+@font-face {
+    font-family: 'Futura Std';
+    src: url('../fonts/FuturaStd-Medium.woff2') format('woff2'),
+        url('../fonts/FuturaStd-Medium.woff') format('woff'),
+        url('../fonts/FuturaStd-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura Std';
+    src: url('../fonts/FuturaStd-MediumOblique.woff2') format('woff2'),
+        url('../fonts/FuturaStd-MediumOblique.woff') format('woff'),
+        url('../fonts/FuturaStd-MediumOblique.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+/* Heavy */
+
+@font-face {
+    font-family: 'Futura Std';
+    src: url('../fonts/FuturaStd-Heavy.woff2') format('woff2'),
+        url('../fonts/FuturaStd-Heavy.woff') format('woff'),
+        url('../fonts/FuturaStd-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura Std';
+    src: url('../fonts/FuturaStd-HeavyOblique.woff2') format('woff2'),
+        url('../fonts/FuturaStd-HeavyOblique.woff') format('woff'),
+        url('../fonts/FuturaStd-HeavyOblique.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}

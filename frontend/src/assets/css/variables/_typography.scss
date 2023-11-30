@@ -1,0 +1,84 @@
+$font-family-heading: 'Futura Std', sans-serif;
+$font-family-base: 'Futura Std', sans-serif;
+$font-family-code: 'Futura Std', sans-serif;
+
+$font-size-base: 16px;
+$font-weight-base: 400;
+
+
+$letter-spacing-base: rem(0.3px);
+$letter-spacing-title: rem(0.5px);
+
+
+$line-height-base: 1.375;
+
+$line-height-h1: rem(75.6px);
+$line-height-h2: rem(67.2px);
+$line-height-h3: rem(38.4px);
+$line-height-h4: rem(24px);
+
+$line-height-paragraph: rem(38.4px);
+$line-height-body-bold: rem(19.2px);
+$line-height-body-medium: rem(22px);
+$line-height-body-light: rem(19.2px);
+$line-height-body-italic: rem(19.2px);
+$line-height-body-extra: rem(16.8px);
+$line-height-body-bold-small: rem(16.8px);
+$line-height-body-small-medium: rem(20px);
+$line-height-body-small: rem(16.8px);
+$line-height-centered-message: rem(34px);
+
+$line-height-links: rem(16.8px);
+
+
+$font-size-h1: rem(63px)    !default;
+$font-size-h2: rem(56px)    !default;
+$font-size-h3: rem(32px)    !default;
+$font-size-h4: rem(20px)    !default;
+$font-size-h5: rem(16px)    !default;
+$font-size-h6: rem(12px)    !default;
+
+$font-size-paragraph: rem(32px);
+$font-size-body-bold: rem(16px);
+$font-size-body-medium: rem(16px);
+$font-size-body-light: rem(16px);
+$font-size-body-italic: rem(16px);
+$font-size-body-extra: rem(14px);
+$font-size-body-bold-small: rem(14px);
+$font-size-body-small-medium: rem(14px);
+$font-size-body-small: rem(14px);
+$font-size-body-xsmall: rem(12px);
+$font-size-centered-message: rem(22px);
+
+$font-size-links: rem(14px);
+
+
+$font-weight-light:             300         !default;
+$font-weight-normal:            400         !default;
+$font-weight-semi:              500         !default;
+$font-weight-semi-md:           650         !default;
+$font-weight-bold:              700         !default;
+
+
+$font-style-normal: normal;
+$font-style-paragraph: italic;
+$font-style-body-italic: italic;
+$font-style-body-extra: italic;
+
+$font-color-body-extra: $green;
+
+
+$letter-spacing-h4: rem(2px);
+$letter-spacing-h3: rem(2px);
+
+$letter-spacing-body-bold: rem(1px);
+$letter-spacing-body-bold-small: rem(1px);
+
+
+// Style link
+$link-color: $grey-scale-1 !default;
+$link-decoration: none !default;
+$link-hover-color: $primary-active !default;
+$link-hover-decoration: none !default;
+$link-font-style: normal;
+$link-cursor: pointer;
