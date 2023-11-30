@@ -1,32 +1,20 @@
 import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import PostsStatus from 'src/blog/posts/domain/value-objects/PostsStatus.vo';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
-// import Comments from 'src/blog/comments/domain/entities/Comments.entity';
+import AggregateRoot from 'src/shared/domain/aggregate/AggregateRoot';
+import Comments from 'src/blog/comments/domain/entities/Comments.entity';
 
-export default class Posts {
-  id: PostsId;
-  publishedAt: CustomDate;
-  editedAt: CustomDate;
-  title: string;
-  content: string;
-  status: PostsStatus;
-  //comments: Comments[];
-
+export default class Posts extends AggregateRoot {
   constructor(
-    id: PostsId,
-    publishedAt: CustomDate,
-    editedAt: CustomDate,
-    title: string,
-    content: string,
-    status: PostsStatus,
+    private id: PostsId,
+    private publishedAt: CustomDate,
+    private editedAt: CustomDate,
+    private title: string,
+    private content: string,
+    private status: PostsStatus,
+    private comments?: Comments[] | null,
   ) {
-    this.id = id;
-    this.publishedAt = publishedAt;
-    this.editedAt = editedAt;
-    this.title = title;
-    this.content = content;
-    this.status = status;
-    //this.comments = comments;
+    super();
   }
 
   static create(
