@@ -22,7 +22,7 @@ export class TypeOrmPostsRepository
   }
 
   async edit(post: Post): Promise<Post | null> {
-    return await this.save(post);
+    return await this.manager.save(post);
   }
 
   async eliminate(post: Post): Promise<void> {

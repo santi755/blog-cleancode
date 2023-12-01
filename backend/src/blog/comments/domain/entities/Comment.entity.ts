@@ -1,23 +1,23 @@
 import CommentsId from 'src/blog/comments/domain/value-objects/CommentsId.vo';
-import PostsId from 'src/blog/posts/domain/value-objects/PostsId.vo';
 import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
+import Post from 'src/blog/posts/domain/entities/Post.entity';
 
 export default class Comment {
   id: CommentsId;
-  postId: PostsId;
+  post: Post;
   author: string;
   content: string;
   createdAt: CustomDate;
 
   constructor(
     id: CommentsId,
-    postId: PostsId,
+    post: Post,
     author: string,
     content: string,
     createdAt: CustomDate,
   ) {
     this.id = id;
-    this.postId = postId;
+    this.post = post;
     this.author = author;
     this.content = content;
     this.createdAt = createdAt;

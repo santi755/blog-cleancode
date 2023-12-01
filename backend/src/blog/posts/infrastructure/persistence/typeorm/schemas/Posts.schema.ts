@@ -34,4 +34,11 @@ export default new EntitySchema<Post>({
       transformer: ValueObjectTransformer(PostsStatus),
     },
   },
+  relations: {
+    comments: {
+      type: 'one-to-many',
+      target: 'Comment',
+      inverseSide: 'post',
+    },
+  },
 });
