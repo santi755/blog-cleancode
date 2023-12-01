@@ -19,7 +19,7 @@ export default new EntitySchema<Comment>({
       type: Date,
       transformer: ValueObjectTransformer(CustomDate),
     },
-    postId: {
+    post: {
       type: String,
       transformer: ValueObjectTransformer(PostsId),
     },
@@ -28,6 +28,15 @@ export default new EntitySchema<Comment>({
     },
     content: {
       type: String,
+    },
+  },
+  relations: {
+    post: {
+      type: 'many-to-one',
+      target: 'Post',
+      joinColumn: {
+        name: 'post',
+      },
     },
   },
 });
