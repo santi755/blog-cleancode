@@ -17,7 +17,7 @@ COPY . .
 # RUN yarn build
 
 # Expose the desired port (e.g., 3000 for a React app)
-EXPOSE 5173
+EXPOSE 3000
 
 # Start the frontend application
 # CMD [ "yarn", "dev" ]
