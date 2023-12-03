@@ -13,8 +13,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Solid: Story = {
     args: {
-        text: 'Primary'
+        text: 'Button solid',
+        appearance: 'solid'
+    }
+};
+
+export const Outlined: Story = {
+    args: {
+        text: 'Button outlined',
+        appearance: 'outlined'
     }
 };

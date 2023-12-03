@@ -1,5 +1,6 @@
 <template>
     <v-text-field
+        class="textfield"
         :prepend-icon="prependIcon"
         :prepend-inner-icon="prependInnerIcon"
         :append-icon="appendIcon"
@@ -8,6 +9,7 @@
         :loading="loading"
         :placeholder="placeholder"
         :clearable="clearable"
+        variant="outlined"
     />
 </template>
 
@@ -47,3 +49,16 @@ defineProps({
     }
 });
 </script>
+
+<style lang="scss" scoped>
+:deep(.textfield) {
+}
+
+.textfield {
+    :deep(.v-field) {
+        @extend .body-bold;
+        @extend .border-radius-none;
+        @extend .bordered;
+    }
+}
+</style>
