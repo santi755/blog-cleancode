@@ -20,5 +20,4 @@ COPY . .
 EXPOSE 3000
 
 # Start the frontend application
-# CMD [ "yarn", "dev" ]
 CMD [ "yarn", "dev", "--host", "0.0.0.0" ]

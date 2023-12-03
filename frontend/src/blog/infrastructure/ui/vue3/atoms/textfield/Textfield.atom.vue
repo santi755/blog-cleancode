@@ -1,23 +1,21 @@
 <template>
-    <v-btn
-        :active="active"
+    <v-text-field
+        :prepend-icon="prependIcon"
+        :prepend-inner-icon="prependInnerIcon"
+        :append-icon="appendIcon"
+        :append-inner-icon="appendInnerIcon"
         :disabled="disabled"
         :loading="loading"
-        :prepend-icon="prependIcon"
-        :append-icon="appendIcon"
-        :text="text"
+        :placeholder="placeholder"
+        :clearable="clearable"
     />
 </template>
 
 <script lang="ts" setup>
 defineProps({
-    text: {
+    placeholder: {
         type: String,
         default: ''
-    },
-    active: {
-        type: Boolean,
-        default: false
     },
     disabled: {
         type: Boolean,
@@ -27,11 +25,23 @@ defineProps({
         type: Boolean,
         default: false
     },
+    clearable: {
+        type: Boolean,
+        default: false
+    },
+    prependIcon: {
+        type: String,
+        default: ''
+    },
+    prependInnerIcon: {
+        type: String,
+        default: ''
+    },
     appendIcon: {
         type: String,
         default: ''
     },
-    prependIcon: {
+    appendInnerIcon: {
         type: String,
         default: ''
     }
