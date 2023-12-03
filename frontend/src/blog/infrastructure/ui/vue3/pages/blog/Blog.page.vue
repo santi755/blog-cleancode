@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ButtonAtom text="Login" appearance="solid"></ButtonAtom>
+        <ButtonAtom text="Login" appearance="outlined"></ButtonAtom>
     </div>
 </template>
 
