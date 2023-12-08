@@ -43,8 +43,4 @@ export default class Post extends AggregateRoot {
   ): Post {
     return new Post(id, publishedAt, editedAt, title, content, status);
   }
-
-  addComment(comment: Comment): void {
-    this.comments = this.comments ? [...this.comments, comment] : [comment];
-  }
 }

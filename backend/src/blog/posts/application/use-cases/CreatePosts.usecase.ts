@@ -23,6 +23,7 @@ export default class CreatePosts {
       content,
       PostsStatus.of(status),
     );
+
     return await this.postsRepository.add(post);
   }
 }

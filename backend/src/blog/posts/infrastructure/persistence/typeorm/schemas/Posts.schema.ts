@@ -6,7 +6,7 @@ import CustomDate from 'src/shared/domain/value-objects/CustomDate.vo';
 import { ValueObjectTransformer } from 'src/shared/infrastructure/persistence/typeorm/transformers/ValueObjectTransformer';
 
 export default new EntitySchema<Post>({
-  name: Post.name,
+  name: 'Post',
   tableName: 'posts',
   target: Post,
   columns: {
@@ -34,6 +34,7 @@ export default new EntitySchema<Post>({
       transformer: ValueObjectTransformer(PostsStatus),
     },
   },
+  /*
   relations: {
     comments: {
       type: 'one-to-many',
@@ -41,4 +42,5 @@ export default new EntitySchema<Post>({
       inverseSide: 'post',
     },
   },
+  */
 });
