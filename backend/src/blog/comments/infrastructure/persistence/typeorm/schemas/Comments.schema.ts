@@ -35,10 +35,12 @@ export default new EntitySchema<Comment>({
     post: {
       target: 'Post',
       type: 'many-to-one',
-      joinColumn: true,
-      cascade: true,
-      eager: false,
-      inverseSide: 'comments',
+      lazy: true,
+
+      joinColumn: {
+        name: 'post',
+        referencedColumnName: 'id',
+      },
     },
   },
   */

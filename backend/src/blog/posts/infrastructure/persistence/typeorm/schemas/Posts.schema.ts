@@ -37,9 +37,10 @@ export default new EntitySchema<Post>({
   /*
   relations: {
     comments: {
-      type: 'one-to-many',
       target: 'Comment',
+      type: 'one-to-many',
       inverseSide: 'post',
+      cascade: true,
     },
   },
   */

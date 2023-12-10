@@ -17,6 +17,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       entities: [path.join(__dirname, '..', '**', '*.schema{.ts,.js}')],
       synchronize: process.env.DB_SYNCHRONIZE === 'true',
       autoLoadEntities: true,
+      // logging: true,
     };
   }
 }

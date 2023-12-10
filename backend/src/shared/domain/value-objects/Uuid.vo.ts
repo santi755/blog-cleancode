@@ -31,4 +31,8 @@ export class Uuid extends ValueObject<string> {
   equals(uuid: Uuid): boolean {
     return this.value === uuid.value;
   }
+
+  toString(): string {
+    return this.value;
+  }
 }

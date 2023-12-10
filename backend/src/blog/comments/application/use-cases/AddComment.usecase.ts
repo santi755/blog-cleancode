@@ -33,6 +33,7 @@ export default class AddCommentToPost {
       content,
       CustomDate.generate(),
     );
+
     await this.commentsRepository.add(comment);
     return comment;
   }
