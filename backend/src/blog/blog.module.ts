@@ -14,7 +14,6 @@ import CreatePosts from './posts/application/use-cases/CreatePosts.usecase';
 import EditPosts from './posts/application/use-cases/EditPosts.usecase';
 import EliminatePosts from './posts/application/use-cases/EliminatePosts.usecase';
 import SearchPosts from './posts/application/use-cases/SearchPosts.usecase';
-import AddComment from './comments/application/use-cases/AddComment.usecase';
 
 // Posts Controllers
 import PostPostController from './posts/infrastructure/nestjs/controllers/PostPost.controller';
@@ -24,6 +23,11 @@ import DeletePostController from './posts/infrastructure/nestjs/controllers/Dele
 
 // Comments Controllers
 import PostCommentController from './comments/infrastructure/nestjs/controllers/PostComment.controller';
+import GetCommentsByPostController from './comments/infrastructure/nestjs/controllers/GetCommentsByPost.controller';
+
+// Comments Use Cases
+import AddComment from './comments/application/use-cases/AddComment.usecase';
+import SearchComments from './comments/application/use-cases/SearchComments.usecase';
 
 // Categories controllers
 import PostCategoryController from './categories/infrastructure/nestjs/controllers/PostCategory.controller';
@@ -50,6 +54,7 @@ import CreateCategory from './categories/application/use-cases/CreateCategory.us
     EliminatePosts,
     SearchPosts,
     AddComment,
+    SearchComments,
     CreateCategory,
   ],
   controllers: [
@@ -59,6 +64,7 @@ import CreateCategory from './categories/application/use-cases/CreateCategory.us
     DeletePostController,
     PostCommentController,
     PostCategoryController,
+    GetCommentsByPostController,
   ],
 })
 export class BlogModule {}

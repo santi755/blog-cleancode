@@ -20,4 +20,8 @@ export class TypeOrmCommentsRepository
   async add(comment: Comment): Promise<Comment | null> {
     return await this.save(comment);
   }
+
+  async findByCriteria(criteria: any): Promise<Comment[]> {
+    return await this.find(criteria);
+  }
 }
