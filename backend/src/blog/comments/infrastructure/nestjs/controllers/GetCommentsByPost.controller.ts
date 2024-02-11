@@ -1,41 +1,15 @@
-import {
-  Body,
-  Controller,
-  Get,
-  HttpException,
-  HttpStatus,
-  Param,
-  UsePipes,
-  ValidationPipe,
-} from '@nestjs/common';
-import Comment from 'src/blog/comments/domain/entities/Comment.entity';
-import AddCommentToPost from 'src/blog/comments/application/use-cases/AddComment.usecase';
-import { CommentRequestDto } from 'src/blog/comments/infrastructure/nestjs/controllers/Comment.dto';
+import Post from 'src/blog/posts/domain/entities/Post.entity';
+import SearchPosts from 'src/blog/posts/application/use-cases/SearchPosts.usecase';
+import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller('posts')
 export default class GetCommentsByPostController {
-  constructor(private readonly addCommentToPost: AddCommentToPost) {}
+  constructor(private readonly searchPosts: SearchPosts) {}
 
+  // TODO: What HttpCode(HttpStatus.OK) does?
+  // @HttpCode(HttpStatus.OK)
   @Get(':postId/comments')
-  @UsePipes(new ValidationPipe())
-  async edit(
-    @Param('postId') postsId: string,
-    @Body() commentRequestDto: CommentRequestDto,
-  ): Promise<Comment> {
-    try {
-      return await this.addCommentToPost.execute(
-        postsId,
-        commentRequestDto.author,
-        commentRequestDto.content,
-      );
-    } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error,
-        },
-        HttpStatus.BAD_REQUEST,
-      );
-    }
+  async search(@Param('postId') postId: string): Promise<Post> {
+    return await this.searchPosts.execute(postId);
   }
 }
