@@ -13,6 +13,7 @@ export default class Post extends AggregateRoot {
     public content: string,
     public status: PostsStatus,
     public comments?: Comment[] | null,
+    public likes?: number,
   ) {
     super();
   }
@@ -24,7 +25,17 @@ export default class Post extends AggregateRoot {
     title: string,
     content: string,
     status: PostsStatus,
+    likes?: number,
   ): Post {
-    return new Post(id, publishedAt, editedAt, title, content, status);
+    return new Post(
+      id,
+      publishedAt,
+      editedAt,
+      title,
+      content,
+      status,
+      null,
+      likes,
+    );
   }
 }

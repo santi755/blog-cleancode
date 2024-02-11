@@ -9,9 +9,8 @@ const icons = {
     inputChecked
 };
 
-/* cc-icon is cause of "CleanCode" project */
 const custom = {
-    component: (props) => h(icons[props.icon], { class: 'cc-icon' })
+    component: (props) => h(icons[props.icon], { class: 'blog-icon' })
 };
 
 export default {

@@ -1,5 +1,7 @@
 <template>
     <div>
+        <v-icon>custom-input</v-icon>
+        <v-icon icon="inputChecked" />
         <ButtonAtom text="Login" appearance="outlined" />
         <WysiwygOrganism />
     </div>

@@ -2,11 +2,13 @@ import { Meta, Title, Story, IconGallery, IconItem } from '@storybook/blocks';
 
 import IconChecked from '../assets/icons/inputChecked.svg';
 
+{console.log('IconChecked => ', IconChecked.render())}
+
 <Meta title="Iconography" />
 
 <IconGallery>
     <IconItem name="input">
-        <span>Input</span>
+        <v-icon icon="inputChecked" />
         {/* <IconChecked /> */}
     </IconItem>
 </IconGallery>

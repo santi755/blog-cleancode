@@ -33,6 +33,10 @@ export default new EntitySchema<Post>({
       type: String,
       transformer: ValueObjectTransformer(PostsStatus),
     },
+    likes: {
+      type: Number,
+      default: 0,
+    },
   },
   /*
   relations: {
